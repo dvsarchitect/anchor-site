@@ -1,32 +1,7 @@
-baseURL = 'https://gettheanchor.org/'
-languageCode = 'en-us'
-title = 'The Anchor'
+# Intentionally minimal. Primary site configuration lives in config.toml.
+# Keeping this file to avoid confusion with Hugo modules.
 
-enableRobotsTXT = true
-relativeURLs = true
-
-[pagination]
-	pagerSize = 10
-
-[permalinks]
-	devotionals = '/devotionals/:slug/'
-
-[params]
-	description = 'Finding our way to Jesus, one verse at a time.'
-	author = 'humble'
-	substack = 'https://humblenv.substack.com/'
-	twitter = 'https://x.com/humble_nv'
-	facebook = 'https://www.facebook.com/theanchorinthestorm'
-	substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
-
-[markup]
-	[markup.goldmark]
-		[markup.goldmark.renderer]
-			unsafe = true
-	[markup.tableOfContents]
-		endLevel = 3
-		ordered = false
-		startLevel = 2
-
-[outputs]
-	home = ['HTML', 'RSS']
+[module]
+  # You can pin Hugo version constraints here if needed in the future.
+  [module.hugoVersion]
+    extended = true
