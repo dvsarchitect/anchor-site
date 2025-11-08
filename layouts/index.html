@@ -31,7 +31,7 @@
           {{ with $post.Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
           <span class="separator">•</span>
           <span>{{ $post.Date.Format "January 2, 2006" }}</span>
-          {{ with $post.Params.readingTime }}<span class="separator">•</span><span>{{ . }}</span>{{ end }}
+          <span class="separator">•</span><span>{{ $post.ReadingTime }} min read</span>
         </div>
         <a class="read-more" href="{{ $post.RelPermalink }}">Read the devotional →</a>
       </article>
@@ -62,6 +62,7 @@
             {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
             <span class="separator">•</span>
             <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            <span class="separator">•</span><span>{{ .ReadingTime }} min</span>
           </div>
         </article>
       {{ end }}
@@ -89,11 +90,15 @@
     <div class="subscribe-card">
       <h2>Get the Monday + Friday devotionals in your inbox</h2>
       <p>Short and honest. Scripture-centered. No spam.</p>
-      <form class="subscribe-form">
-        <input type="email" placeholder="you@example.com" aria-label="Email address" required />
-        <button class="btn-subscribe-form" type="submit">Subscribe</button>
-      </form>
-      <div class="subscribe-note">Powered by Substack (or your email tool of choice)</div>
+      {{ if .Site.Params.substack_embed }}
+        {{ .Site.Params.substack_embed | safeHTML }}
+      {{ else }}
+        <form class="subscribe-form">
+          <input type="email" placeholder="you@example.com" aria-label="Email address" required />
+          <button class="btn-subscribe-form" type="submit">Subscribe</button>
+        </form>
+        <div class="subscribe-note">Add your Substack embed code in <code>params.substack_embed</code> to enable direct subscriptions.</div>
+      {{ end }}
     </div>
   </div>
 </section>

@@ -10,14 +10,14 @@
       <div class="article-meta">
         <span>{{ .Date.Format "January 2, 2006" }}</span>
         {{ with .Params.scripture }}<span class="separator">•</span><span class="scripture-ref">{{ . }}</span>{{ end }}
-        {{ with .Params.readingTime }}<span class="separator">•</span><span>{{ . }}</span>{{ end }}
+        <span class="separator">•</span><span>{{ .ReadingTime }} min read</span>
       </div>
     </div>
   </header>
   <div class="container-narrow">
     {{ with .Params.image }}
     <div class="article-hero-image ratio-21-9">
-      <img src="{{ . }}" alt="{{ $.Title }}" loading="eager">
+  <img src="{{ . }}" alt="{{ $.Title }}" loading="eager" width="1200" height="514">
     </div>
     {{ end }}
     <div class="article-body">

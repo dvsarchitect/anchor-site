@@ -1,0 +1,14 @@
+[build]
+  command = "hugo"
+  publish = "public"
+
+[build.environment]
+  HUGO_VERSION = "0.152.2"
+  HUGO_ENABLEGITINFO = "true"
+
+# Redirects (optional)
+# [[redirects]]
+#   from = "/"
+#   to = "/index.html"
+#   status = 200
+#   force = true

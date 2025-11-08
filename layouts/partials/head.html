@@ -9,9 +9,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/css/styles.css" />
-  <link rel="stylesheet" href="/css/devotional.css" />
-  <link rel="stylesheet" href="/css/featured-images.css" />
+  <link rel="stylesheet" href="{{ "css/styles.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/devotional.css" | absURL }}" />
+  <link rel="stylesheet" href="{{ "css/featured-images.css" | absURL }}" />
   {{- /* Open Graph basics */ -}}
   {{- $ogTitle := cond (ne .Title "") (printf "%s · %s" .Title .Site.Title) .Site.Title -}}
   <meta property="og:title" content="{{ $ogTitle }}"/>

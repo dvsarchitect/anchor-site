@@ -3,6 +3,7 @@ languageCode = 'en-us'
 title = 'The Anchor'
 
 enableRobotsTXT = true
+relativeURLs = true
 
 [pagination]
 	pagerSize = 10
@@ -26,4 +27,4 @@ enableRobotsTXT = true
 		startLevel = 2
 
 [outputs]
-	home = ['HTML', 'RSS', 'JSON']
+	home = ['HTML', 'RSS']
