@@ -1,0 +1,29 @@
+baseURL = 'https://gettheanchor.org/'
+languageCode = 'en-us'
+title = 'The Anchor'
+
+enableRobotsTXT = true
+
+[pagination]
+	pagerSize = 10
+
+[permalinks]
+	devotionals = '/devotionals/:slug/'
+
+[params]
+	description = 'Finding our way to Jesus, one verse at a time.'
+	author = 'humble'
+	twitter = ''
+	substack_embed = ''
+
+[markup]
+	[markup.goldmark]
+		[markup.goldmark.renderer]
+			unsafe = true
+	[markup.tableOfContents]
+		endLevel = 3
+		ordered = false
+		startLevel = 2
+
+[outputs]
+	home = ['HTML', 'RSS', 'JSON']

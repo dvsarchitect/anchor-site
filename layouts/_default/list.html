@@ -1,0 +1,29 @@
+{{ define "main" }}
+<section class="devotionals-grid-section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Devotionals</div>
+        <h2>All Devotionals</h2>
+      </div>
+    </div>
+    <div class="devotionals-grid">
+      {{ range .Paginator.Pages }}
+        {{ $isFriday := eq .Params.type "friday" }}
+        {{ $cardClass := cond $isFriday "friday-card" "monday-card" }}
+        <article class="devotional-card {{ $cardClass }}">
+          <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
+          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
+          <div class="card-meta">
+            {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+            <span class="separator">•</span>
+            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+    {{ template "partials/pagination.html" . }}
+  </div>
+</section>
+{{ end }}

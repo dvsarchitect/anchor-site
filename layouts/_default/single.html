@@ -1,0 +1,18 @@
+{{ define "main" }}
+<article class="devotional-article">
+  <header class="article-header">
+    <div class="container-narrow">
+      <div class="article-label monday-label">Page</div>
+      <h1 class="article-title">{{ .Title }}</h1>
+      <div class="article-meta">
+        <span>{{ .Date.Format "January 2, 2006" }}</span>
+      </div>
+    </div>
+  </header>
+  <div class="container-narrow">
+    <div class="article-body">
+      {{ .Content }}
+    </div>
+  </div>
+</article>
+{{ end }}

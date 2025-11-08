@@ -1,0 +1,100 @@
+{{ define "main" }}
+<section class="hero">
+  <div class="container hero-content">
+    <h1 class="hero-title">Finding our way to Jesus, one verse at a time</h1>
+    <p class="hero-subtitle">Two devotionals a week: a practical encouragement on Monday and a deep dive on Friday—always Scripture-first, honest, and hopeful.</p>
+    <div class="hero-cta">
+      <a class="btn-subscribe" href="#subscribe">Subscribe</a>
+      {{ with (first 1 (where .Site.RegularPages "Section" "devotionals")) }}
+        <a class="btn-secondary" href="{{ (index . 0).RelPermalink }}">Read Latest Devotional</a>
+      {{ end }}
+    </div>
+    <div class="hero-schedule">Mondays (500–600 words) · Fridays (800–1,600 words)</div>
+  </div>
+</section>
+
+<section class="featured-section">
+  <div class="container">
+    <div class="section-label">Featured</div>
+    {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
+    {{ if gt (len $featured) 0 }}
+      {{ $post := index $featured 0 }}
+      <article class="featured-card">
+        {{ with $post.Params.image }}
+        <div class="featured-card-image">
+          <img src="{{ . }}" alt="{{ $post.Title }}">
+        </div>
+        {{ end }}
+        <h3 class="featured-title"><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
+        {{ with $post.Params.excerpt }}<p class="featured-excerpt">{{ . }}</p>{{ end }}
+        <div class="featured-meta">
+          {{ with $post.Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+          <span class="separator">•</span>
+          <span>{{ $post.Date.Format "January 2, 2006" }}</span>
+          {{ with $post.Params.readingTime }}<span class="separator">•</span><span>{{ . }}</span>{{ end }}
+        </div>
+        <a class="read-more" href="{{ $post.RelPermalink }}">Read the devotional →</a>
+      </article>
+    {{ else }}
+      <p>No featured devotional yet.</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="devotionals-grid-section" id="devotionals">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Recent</div>
+        <h2>Latest Devotionals</h2>
+      </div>
+      <a class="view-all" href="/devotionals/">View all</a>
+    </div>
+    <div class="devotionals-grid">
+      {{ range first 6 (where .Site.RegularPages "Section" "devotionals") }}
+        {{ $isFriday := eq .Params.type "friday" }}
+        {{ $cardClass := cond $isFriday "friday-card" "monday-card" }}
+        <article class="devotional-card {{ $cardClass }}">
+          <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
+          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
+          <div class="card-meta">
+            {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+            <span class="separator">•</span>
+            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="about-section" id="about">
+  <div class="container about-content">
+    <div class="about-text">
+      <h2>About The Anchor</h2>
+      <p>The Anchor is for men (and anyone) who feel adrift—caught between what’s true and what’s loud. We return to Scripture, slowly and honestly, because the goal isn’t to win arguments; it’s to find Jesus—and follow Him.</p>
+      <p>On Mondays you’ll get a short, practical word. On Fridays, a deeper study that meets you where you are. No posturing. No hot takes. Just the Word, applied.</p>
+    </div>
+    <div class="about-image">
+      <div class="image-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 011 1v3.126a5 5 0 014 4.874 5.002 5.002 0 01-4 4.874V21a1 1 0 11-2 0v-5.126A5.002 5.002 0 018 11.874a5 5 0 014-4.874V3a1 1 0 011-1zm0 6a3 3 0 100 6 3 3 0 000-6z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="subscribe-section" id="subscribe">
+  <div class="container">
+    <div class="subscribe-card">
+      <h2>Get the Monday + Friday devotionals in your inbox</h2>
+      <p>Short and honest. Scripture-centered. No spam.</p>
+      <form class="subscribe-form">
+        <input type="email" placeholder="you@example.com" aria-label="Email address" required />
+        <button class="btn-subscribe-form" type="submit">Subscribe</button>
+      </form>
+      <div class="subscribe-note">Powered by Substack (or your email tool of choice)</div>
+    </div>
+  </div>
+</section>
+{{ end }}
