@@ -6,6 +6,8 @@
   <title>{{ with .Title }}{{ . }} · {{ end }}{{ .Site.Title }}</title>
   {{ with .Description }}<meta name="description" content="{{ . }}" />{{ end }}
   <meta name="theme-color" content="#ffffff" />
+  <!-- Early theme application to avoid flash of incorrect mode -->
+  <script>(function(){try{var s=localStorage.getItem('theme');var prefers=window.matchMedia('(prefers-color-scheme: dark)').matches;var m=s|| (prefers?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">

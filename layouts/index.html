@@ -65,10 +65,17 @@
         {{ $isFriday := eq .Params.type "friday" }}
         {{ $cardClass := cond $isFriday "friday-card" "monday-card" }}
         <article class="devotional-card {{ $cardClass }}">
-          {{ with .Params.image }}
-          <a class="card-thumb" href="{{ $.RelPermalink }}">
-            <img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}">
-          </a>
+          {{ if .Params.image }}
+            <a class="card-thumb" href="{{ .RelPermalink }}">
+              <img src="{{ .Params.image }}" alt="{{ with .Params.image_alt }}{{ . }}{{ else }}{{ .Title }}{{ end }}" loading="lazy">
+            </a>
+          {{ else }}
+            <a class="card-thumb" href="{{ .RelPermalink }}">
+              <div class="image-placeholder {{ if not $isFriday }}monday-theme{{ end }}">
+                <!-- simple anchor icon as placeholder -->
+                <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M12 2a1 1 0 0 1 1 1v3.06a6 6 0 1 1-2 0V3a1 1 0 0 1 1-1zm0 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8zM6 21a1 1 0 1 1 0-2h12a1 1 0 1 1 0 2H6z" fill="currentColor"/></svg>
+              </div>
+            </a>
           {{ end }}
           <div class="card-body">
             <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>

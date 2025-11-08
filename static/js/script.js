@@ -1,4 +1,6 @@
 // Copied from website-mockup/script.js - minor adjustments for Hugo
+// Enhanced with theme persistence + Twitter widget theme sync + image lazy state
+
 document.addEventListener('DOMContentLoaded',function(){
 	const toggle=document.querySelector('.mobile-menu-toggle'), nav=document.querySelector('.nav-links');
 	if(toggle){ toggle.addEventListener('click',function(){ nav.classList.toggle('mobile-active'); this.classList.toggle('active'); }); }
@@ -60,15 +62,27 @@ document.addEventListener('DOMContentLoaded',function(){
 		last=y;
 	});
 
-		// Theme toggle logic
-		const root = document.documentElement;
-		const btn = document.getElementById('theme-toggle');
-		const getPref = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-		const apply = (mode) => { root.setAttribute('data-theme', mode); if(btn){ btn.querySelector('.theme-icon').textContent = mode==='dark' ? '☀️' : '🌙'; btn.setAttribute('aria-pressed', mode==='dark' ? 'true':'false'); } };
-		apply(getPref());
-		btn && btn.addEventListener('click', () => {
-			const next = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
-			localStorage.setItem('theme', next);
-			apply(next);
-		});
+	// Theme toggle logic (with Twitter widget sync)
+	const root = document.documentElement;
+	const btn = document.getElementById('theme-toggle');
+	const getPref = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+	const apply = (mode) => {
+		root.setAttribute('data-theme', mode);
+		if(btn){ btn.querySelector('.theme-icon').textContent = mode==='dark' ? '☀️' : '🌙'; btn.setAttribute('aria-pressed', mode==='dark' ? 'true':'false'); }
+		const tl = document.querySelector('.twitter-timeline');
+		if(tl){ tl.setAttribute('data-theme', mode==='dark' ? 'dark' : 'light'); if(window.twttr?.widgets){ window.twttr.widgets.load(); } }
+	};
+	apply(getPref());
+	btn && btn.addEventListener('click', () => {
+		const next = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
+		localStorage.setItem('theme', next);
+		apply(next);
+	});
+
+	// Lazy image fade-in
+	const lazyImgs = document.querySelectorAll('img[loading="lazy"]');
+	lazyImgs.forEach(img => {
+		if(img.complete){ img.classList.add('loaded'); return; }
+		img.addEventListener('load', () => img.classList.add('loaded'));
+	});
 });
