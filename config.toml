@@ -18,7 +18,7 @@ relativeURLs = true
   author = 'humble'
   substack = 'https://humblenv.substack.com/'
   twitter = 'https://x.com/humble_nv'
-  facebook = 'https://www.facebook.com/profile.php?id=61579588747981'
+  facebook = 'https://www.facebook.com/theanchorinthestorm'
   substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
 
 [markup]
