@@ -16,7 +16,9 @@ relativeURLs = true
 [params]
   description = 'Finding our way to Jesus, one verse at a time.'
   author = 'humble'
-  twitter = ''
+  substack = 'https://humblenv.substack.com/'
+  twitter = 'https://x.com/humble_nv'
+  facebook = 'https://www.facebook.com/profile.php?id=61579588747981'
   substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
 
 [markup]

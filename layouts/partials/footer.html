@@ -20,9 +20,9 @@
         </div>
         <div class="footer-column">
           <h4>Connect</h4>
-          <a href="https://substack.com" target="_blank" rel="noopener">Substack</a>
-          <a href="#">Twitter</a>
-          <a href="#">Contact</a>
+          {{ with .Site.Params.substack }}<a href="{{ . }}" target="_blank" rel="noopener">Substack</a>{{ end }}
+          {{ with .Site.Params.twitter }}<a href="{{ . }}" target="_blank" rel="noopener">X (Twitter)</a>{{ end }}
+          {{ with .Site.Params.facebook }}<a href="{{ . }}" target="_blank" rel="noopener">Facebook</a>{{ end }}
         </div>
       </div>
     </div>
