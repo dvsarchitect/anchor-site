@@ -33,6 +33,8 @@ relativeURLs = true
   banner_image = '/images/banner.png'
   banner_alt = 'The Anchor banner'
   twitter_handle = 'humble_nv'
+  # Switch homepage layout: 'default' or 'conversion'
+  homepage_variant = 'conversion'
 
 [markup]
   [markup.goldmark]

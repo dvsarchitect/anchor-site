@@ -1,0 +1,114 @@
+{{ define "main" }}
+<section class="hero hero-conversion">
+  <div class="hero-inner">
+    <div class="hero-left">
+      {{ with .Site.Params.banner_image }}
+      <div class="hero-banner-full">
+        <img src="{{ . | relURL }}" alt="{{ with $.Site.Params.banner_alt }}{{ . }}{{ else }}Site banner{{ end }}">
+      </div>
+      {{ end }}
+      <h1 class="hero-title">Finding our way to Jesus, one verse at a time</h1>
+      <p class="hero-subtitle">Two devotionals a week. Scripture-first. Honest. Hopeful. Built for men who refuse to drift.</p>
+      <div class="hero-metrics">
+        <span>Mon: Practical</span><span>•</span><span>Fri: Deep Dive</span><span>•</span><span>{{ len (where .Site.RegularPages "Section" "devotionals") }} devotionals</span>
+      </div>
+    </div>
+    <div class="hero-right">
+      <div class="subscribe-panel">
+        <h2>Subscribe</h2>
+        <p>Get both weekly posts directly. No noise, just the Word applied.</p>
+        {{ if .Site.Params.substack_embed }}
+          <div class="subscribe-embed">{{ .Site.Params.substack_embed | safeHTML }}</div>
+        {{ else }}
+          <form class="subscribe-form">
+            <input type="email" placeholder="you@example.com" aria-label="Email address" required />
+            <button class="btn-subscribe-form" type="submit">Join Free</button>
+          </form>
+        {{ end }}
+        <div class="trust-hints">
+          <span>• No spam</span><span>• Unsubscribe anytime</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="featured-section alt-spacing">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Featured</div>
+        <h2>Core Highlight</h2>
+      </div>
+    </div>
+    {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
+    {{ if gt (len $featured) 0 }}
+      {{ $post := index $featured 0 }}
+      <article class="featured-card wide">
+        {{ with $post.Params.image }}
+        <div class="featured-card-image"><img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}"></div>
+        {{ end }}
+        <div class="featured-card-body">
+          <h3 class="featured-title"><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
+          {{ with $post.Params.excerpt }}<p class="featured-excerpt">{{ . }}</p>{{ end }}
+          <div class="featured-meta">
+            {{ with $post.Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+            <span class="separator">•</span>
+            <span>{{ $post.Date.Format "Jan 2, 2006" }}</span>
+            <span class="separator">•</span>
+            <span>{{ $post.ReadingTime }} min read</span>
+          </div>
+          <a class="read-more" href="{{ $post.RelPermalink }}">Open Devotional →</a>
+        </div>
+      </article>
+    {{ else }}
+      <p>No featured devotional yet.</p>
+    {{ end }}
+  </div>
+</section>
+
+<section class="devotionals-grid-section conversion-grid" id="devotionals">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Recent</div>
+        <h2>Latest Devotionals</h2>
+      </div>
+      <a class="view-all" href="/devotionals/">Browse All</a>
+    </div>
+    <div class="devotionals-grid">
+      {{ range first 6 (where .Site.RegularPages "Section" "devotionals") }}
+        {{ $isFriday := eq .Params.type "friday" }}
+        <article class="devotional-card {{ if $isFriday }}friday-card{{ else }}monday-card{{ end }}">
+          <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
+          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+          {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
+          <div class="card-meta">
+            {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+            <span class="separator">•</span><span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            <span class="separator">•</span><span>{{ .ReadingTime }} min</span>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+{{ partial "twitter.html" . }}
+
+<section class="about-section compact" id="about">
+  <div class="container about-content">
+    <div class="about-text">
+      <h2>Why The Anchor?</h2>
+      <p>Men are told to be quiet, ashamed, or perform. We build something different: rooted, honest discipleship. Scripture at the center. Courage at the edges.</p>
+      <p>No noise. No outrage cycles. Just slow, anchored growth.</p>
+    </div>
+    <div class="about-image">
+      <div class="image-placeholder">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 011 1v3.126a5 5 0 014 4.874 5.002 5.002 0 01-4 4.874V21a1 1 0 11-2 0v-5.126A5.002 5.002 0 018 11.874a5 5 0 014-4.874V3a1 1 0 011-1zm0 6a3 3 0 100 6 3 3 0 000-6z"/></svg>
+      </div>
+    </div>
+  </div>
+</section>
+
+{{ end }}

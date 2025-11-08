@@ -1,4 +1,7 @@
 {{ define "main" }}
+{{ if eq .Site.Params.homepage_variant "conversion" }}
+  {{ partial "home_conversion.html" . }}
+{{ else }}
 <section class="hero">
   <div class="container hero-content">
     {{ with .Site.Params.banner_image }}
@@ -109,4 +112,5 @@
     </div>
   </div>
 </section>
+{{ end }}
 {{ end }}

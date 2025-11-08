@@ -59,4 +59,16 @@ document.addEventListener('DOMContentLoaded',function(){
 		else if(y<last && navbar?.classList.contains('scroll-down')){ navbar?.classList.remove('scroll-down'); navbar?.classList.add('scroll-up'); }
 		last=y;
 	});
+
+		// Theme toggle logic
+		const root = document.documentElement;
+		const btn = document.getElementById('theme-toggle');
+		const getPref = () => localStorage.getItem('theme') || (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+		const apply = (mode) => { root.setAttribute('data-theme', mode); if(btn){ btn.querySelector('.theme-icon').textContent = mode==='dark' ? '☀️' : '🌙'; btn.setAttribute('aria-pressed', mode==='dark' ? 'true':'false'); } };
+		apply(getPref());
+		btn && btn.addEventListener('click', () => {
+			const next = (root.getAttribute('data-theme') === 'dark') ? 'light' : 'dark';
+			localStorage.setItem('theme', next);
+			apply(next);
+		});
 });
