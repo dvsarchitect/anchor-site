@@ -5,7 +5,8 @@ type: "friday"
 scripture: "Hebrews 12:1–3"
 readingTime: "12 min read"
 featured: true
-image: "/images/devotionals/fight-feels-hard-hero.jpg"
+image: "https://substackcdn.com/image/fetch/$s_!_Jmi!,w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe38ed038-1ef0-4be7-9a7f-55ff21d056d8_1312x736.png"
+image_alt: "Runner pressing forward on track symbolizing endurance in faith"
 excerpt: "When you’re tired of trying, Hebrews 12 calls us to fix our eyes on Jesus and keep running the long race of faith."
 ---
 

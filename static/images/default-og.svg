@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630">
+  <defs>
+    <linearGradient id="g" x1="0" x2="1" y1="0" y2="1">
+      <stop offset="0%" stop-color="#0a2540"/>
+      <stop offset="100%" stop-color="#174d7a"/>
+    </linearGradient>
+  </defs>
+  <rect width="1200" height="630" fill="url(#g)"/>
+  <g fill="#ffffff" font-family="'Inter', Arial, sans-serif">
+    <text x="60" y="180" font-size="56" opacity="0.85">The Anchor</text>
+    <text x="60" y="255" font-size="40" opacity="0.85">Finding our way to Jesus, one verse at a time.</text>
+  </g>
+  <g fill="#ffffff" opacity="0.08">
+    <circle cx="1050" cy="540" r="220"/>
+    <circle cx="1020" cy="540" r="180"/>
+  </g>
+</svg>

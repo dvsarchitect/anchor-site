@@ -6,6 +6,7 @@ scripture: "Ephesians 6:13–14"
 readingTime: "5 min read"
 featured: false
 image: "/images/devotionals/start-week-standing-firm-hero.jpg"
+image_alt: "Simple standing posture illustration representing spiritual steadiness"
 excerpt: "Paul tells us to take our stand. Not in our strength, but in God’s armor. Here’s a short word to start the week steady."
 ---
 

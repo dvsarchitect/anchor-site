@@ -17,7 +17,7 @@
   <div class="container-narrow">
     {{ with .Params.image }}
     <div class="article-hero-image ratio-21-9">
-  <img src="{{ . }}" alt="{{ $.Title }}" loading="eager" width="1200" height="514">
+      <img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="eager" width="1200" height="514">
     </div>
     {{ end }}
     <div class="article-body">

@@ -14,10 +14,11 @@
   <link rel="stylesheet" href="{{ "css/featured-images.css" | relURL }}" />
   {{- /* Open Graph basics */ -}}
   {{- $ogTitle := cond (ne .Title "") (printf "%s · %s" .Title .Site.Title) .Site.Title -}}
+  {{- $ogImage := or .Params.og_image (or .Params.image .Site.Params.default_og_image) -}}
   <meta property="og:title" content="{{ $ogTitle }}"/>
   <meta property="og:type" content="article"/>
   <meta property="og:url" content="{{ .Permalink }}"/>
-  {{ with .Params.og_image }}<meta property="og:image" content="{{ . }}"/>{{ end }}
+  {{ with $ogImage }}<meta property="og:image" content="{{ . }}"/>{{ end }}
   <meta name="twitter:card" content="summary_large_image"/>
 </head>
 <body>

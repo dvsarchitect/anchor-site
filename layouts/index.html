@@ -22,7 +22,7 @@
       <article class="featured-card">
         {{ with $post.Params.image }}
         <div class="featured-card-image">
-          <img src="{{ . }}" alt="{{ $post.Title }}">
+          <img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}">
         </div>
         {{ end }}
         <h3 class="featured-title"><a href="{{ $post.RelPermalink }}">{{ $post.Title }}</a></h3>
