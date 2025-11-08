@@ -30,7 +30,7 @@ relativeURLs = true
   default_og_image = '/images/default-og.svg'
   substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
   # Homepage banner image (can be an absolute URL or a path under /static)
-  banner_image = '/images/banner-placeholder.svg'
+  banner_image = '/images/banner.png'
   banner_alt = 'The Anchor banner'
 
 [markup]
