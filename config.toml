@@ -3,8 +3,9 @@ languageCode = 'en-us'
 title = 'The Anchor'
 
 enableRobotsTXT = true
-# For Netlify builds, use absolute URLs in production. We'll keep relative for local file opens via relURL in templates.
-relativeURLs = false
+# Enable relative URLs so assets resolve correctly on Netlify preview domains *and* custom domain.
+# We will switch helpers in templates from absURL to relURL.
+relativeURLs = true
 
 [pagination]
   pagerSize = 10
