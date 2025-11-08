@@ -1,6 +1,7 @@
 [build]
   command = "hugo --config config.toml --gc --minify"
   publish = "public"
+  ignore = "bash netlify-ignore.sh"
 
 [build.environment]
   HUGO_VERSION = "0.152.2"
