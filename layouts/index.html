@@ -65,14 +65,21 @@
         {{ $isFriday := eq .Params.type "friday" }}
         {{ $cardClass := cond $isFriday "friday-card" "monday-card" }}
         <article class="devotional-card {{ $cardClass }}">
-          <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
-          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
-          <div class="card-meta">
-            {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
-            <span class="separator">•</span>
-            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
-            <span class="separator">•</span><span>{{ .ReadingTime }} min</span>
+          {{ with .Params.image }}
+          <a class="card-thumb" href="{{ $.RelPermalink }}">
+            <img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}">
+          </a>
+          {{ end }}
+          <div class="card-body">
+            <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
+            <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
+            <div class="card-meta">
+              {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+              <span class="separator">•</span>
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+              <span class="separator">•</span><span>{{ .ReadingTime }} min</span>
+            </div>
           </div>
         </article>
       {{ end }}
@@ -88,9 +95,11 @@
       <p>On Mondays you’ll get a short, practical word. On Fridays, a deeper study that meets you where you are. No posturing. No hot takes. Just the Word, applied.</p>
     </div>
     <div class="about-image">
-      <div class="image-placeholder">
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2a1 1 0 011 1v3.126a5 5 0 014 4.874 5.002 5.002 0 01-4 4.874V21a1 1 0 11-2 0v-5.126A5.002 5.002 0 018 11.874a5 5 0 014-4.874V3a1 1 0 011-1zm0 6a3 3 0 100 6 3 3 0 000-6z"/></svg>
+      {{ with .Site.Params.logo_url }}
+      <div class="about-logo-wrap">
+        <img src="{{ . }}" alt="The Anchor logo" class="about-logo">
       </div>
+      {{ end }}
     </div>
   </div>
 </section>
