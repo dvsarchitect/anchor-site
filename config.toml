@@ -12,6 +12,14 @@ relativeURLs = true
 
 [permalinks]
   devotionals = '/devotionals/:slug/'
+  articles = '/articles/:slug/'
+  social = '/social/:year/:month/:slug/'
+  series = '/series/:slug/'
+
+[taxonomies]
+  tag = 'tags'
+  category = 'categories'
+  series = 'series'
 
 [params]
   description = 'Finding our way to Jesus, one verse at a time.'
