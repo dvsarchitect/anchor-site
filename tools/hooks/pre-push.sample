@@ -1,0 +1,30 @@
+#!/usr/bin/env bash
+# Pre-push hook sample: Warn if pushing a very small change set (encourage batching)
+# Install: copy to .git/hooks/pre-push and chmod +x .git/hooks/pre-push
+
+REMOTE="$1"; URL="$2"
+
+# Compare with origin/main (adjust if using a different main branch name)
+BASE="origin/main"
+
+# Fetch latest reference silently
+git fetch -q origin main
+
+# Changed files count
+CHANGED_COUNT=$(git diff --name-only $BASE..HEAD | wc -l | tr -d ' ')
+
+# Threshold of minimal change set
+THRESHOLD=3
+
+if [ "$CHANGED_COUNT" -lt "$THRESHOLD" ]; then
+  echo "[pre-push] Warning: Only $CHANGED_COUNT changed file(s). Consider batching to save build credits." >&2
+  echo "           Abort push (Ctrl+C) and continue working if not urgent." >&2
+fi
+
+# Optional: abort automatically if 0 or 1 changes
+# if [ "$CHANGED_COUNT" -lt 2 ]; then
+#   echo "[pre-push] Push blocked: too few changes." >&2
+#   exit 1
+# fi
+
+exit 0
