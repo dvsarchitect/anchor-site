@@ -1,6 +1,11 @@
 {{ define "main" }}
 <section class="hero">
   <div class="container hero-content">
+    {{ with .Site.Params.banner_image }}
+    <div class="hero-banner">
+      <img src="{{ . | absURL }}" alt="{{ with $.Site.Params.banner_alt }}{{ . }}{{ else }}Site banner{{ end }}">
+    </div>
+    {{ end }}
     <h1 class="hero-title">Finding our way to Jesus, one verse at a time</h1>
     <p class="hero-subtitle">Two devotionals a week: a practical encouragement on Monday and a deep dive on Friday—always Scripture-first, honest, and hopeful.</p>
     <div class="hero-cta">
