@@ -1,16 +1,17 @@
 ---
-title: "When the Fight Feels Hard: Running with Endurance"
-date: 2025-11-01
+title: "When the Fight Feels Hard"
+date: 2025-11-07
 type: "friday"
-scripture: "Hebrews 12:1–3"
-readingTime: "12 min read"
+scripture: "Hebrews 12:1-3"
 featured: true
-image: "https://substackcdn.com/image/fetch/$s_!_Jmi!,w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe38ed038-1ef0-4be7-9a7f-55ff21d056d8_1312x736.png"
+image: "https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe38ed038-1ef0-4be7-9a7f-55ff21d056d8_1312x736.png"
 image_alt: "Runner pressing forward on track symbolizing endurance in faith"
-excerpt: "When you’re tired of trying, Hebrews 12 calls us to fix our eyes on Jesus and keep running the long race of faith."
+excerpt: "Struggling to stay motivated in your faith? Discover how to run with endurance when the fight feels hard by fixing your eyes on Jesus, not your failures."
 ---
 
-I didn’t want to open my Bible this morning.
+## Friday Deep Dive - Week 2
+
+I didn't want to open my Bible this morning.
 
 There it was on my desk where I left it the night before. And there I was, staring at it, already feeling the quiet shame that comes when your Bible doesn’t feel like **good news** but another reminder of how you’re not measuring up.
 
