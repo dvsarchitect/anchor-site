@@ -1,2 +1,62 @@
 // Copied from website-mockup/script.js - minor adjustments for Hugo
-document.addEventListener('DOMContentLoaded',function(){const e=document.querySelector('.mobile-menu-toggle'),t=document.querySelector('.nav-links');e&&e.addEventListener('click',function(){t.classList.toggle('mobile-active'),this.classList.toggle('active')});document.querySelectorAll('a[href^="#"]').forEach(e=>{e.addEventListener('click',function(e){const o=this.getAttribute('href');if('#'!==o&&''!==o){e.preventDefault();const n=document.querySelector(o);if(n){const e=document.querySelector('.navbar').offsetHeight,o=n.offsetTop-e-20;window.scrollTo({top:o,behavior:'smooth'})}}})});const o=document.querySelectorAll('.share-btn');o.forEach(e=>{e.addEventListener('click',function(){const e=this.dataset.platform,t=window.location.href,o=(document.querySelector('.article-title')?.textContent)||'The Anchor';let n='';switch(e){case'twitter':n=`https://twitter.com/intent/tweet?url=${encodeURIComponent(t)}&text=${encodeURIComponent(o)}`;break;case'facebook':n=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(t)}`;break;case'email':n=`mailto:?subject=${encodeURIComponent(o)}&body=${encodeURIComponent('Check out this devotional: '+t)}`}n&&('email'===e?window.location.href=n:window.open(n,'_blank','width=600,height=400'))})});const n=()=>{const e=document.createElement('div');e.className='reading-progress',e.style.cssText='position: fixed; top: 0; left: 0; width: 0%; height: 3px; background: var(--color-accent); z-index: 9999; transition: width 0.2s ease;',document.body.appendChild(e),window.addEventListener('scroll',()=>{const t=window.innerHeight,o=document.documentElement.scrollHeight-t,n=window.scrollY,c=n/o*100;e.style.width=c+'%'})};document.querySelector('.devotional-article')&&n();let c=0;const r=document.querySelector('.navbar');window.addEventListener('scroll',()=>{const e=window.scrollY;e<=0?r.classList.remove('scroll-up'):e>c&&!r.classList.contains('scroll-down')?(r.classList.remove('scroll-up'),r.classList.add('scroll-down')):e<c&&r.classList.contains('scroll-down')&&(r.classList.remove('scroll-down'),r.classList.add('scroll-up')),c=e})});
+document.addEventListener('DOMContentLoaded',function(){
+	const toggle=document.querySelector('.mobile-menu-toggle'), nav=document.querySelector('.nav-links');
+	if(toggle){ toggle.addEventListener('click',function(){ nav.classList.toggle('mobile-active'); this.classList.toggle('active'); }); }
+
+	// Smooth scroll for in-page anchors only (avoid intercepting absolute hashes like /#about on other pages)
+	document.querySelectorAll('a[href^="#"]').forEach(a=>{
+		a.addEventListener('click',function(ev){
+			const href=this.getAttribute('href');
+			if(href && href.startsWith('#') && href.length>1){
+				const target=document.querySelector(href);
+				if(target){
+					ev.preventDefault();
+					const navH=(document.querySelector('.navbar')?.offsetHeight)||0;
+					const y=target.getBoundingClientRect().top + window.scrollY - navH - 20;
+					window.scrollTo({top:y, behavior:'smooth'});
+					// Close mobile menu after navigation
+					nav?.classList.remove('mobile-active'); toggle?.classList.remove('active');
+				}
+			}
+		});
+	});
+
+	// Share buttons
+	const shareBtns=document.querySelectorAll('.share-btn');
+	shareBtns.forEach(btn=>{
+		btn.addEventListener('click',function(){
+			const platform=this.dataset.platform, url=window.location.href,
+						title=(document.querySelector('.article-title')?.textContent)||'The Anchor';
+			let share='';
+			switch(platform){
+				case 'twitter': share=`https://twitter.com/intent/tweet?url=${encodeURIComponent(url)}&text=${encodeURIComponent(title)}`; break;
+				case 'facebook': share=`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`; break;
+				case 'email': share=`mailto:?subject=${encodeURIComponent(title)}&body=${encodeURIComponent('Check out this devotional: '+url)}`; break;
+			}
+			if(share){ platform==='email' ? (window.location.href=share) : window.open(share,'_blank','width=600,height=400'); }
+		});
+	});
+
+	// Reading progress on devotional pages
+	const enableProgress=()=>{
+		const bar=document.createElement('div');
+		bar.className='reading-progress';
+		bar.style.cssText='position:fixed;top:0;left:0;width:0%;height:3px;background:var(--color-accent);z-index:9999;transition:width .2s ease;';
+		document.body.appendChild(bar);
+		window.addEventListener('scroll',()=>{
+			const view=window.innerHeight, doc=document.documentElement.scrollHeight - view, y=window.scrollY;
+			const pct = doc>0 ? (y/doc*100) : 0; bar.style.width=pct+'%';
+		});
+	};
+	document.querySelector('.devotional-article') && enableProgress();
+
+	// Hide-on-scroll navbar behavior
+	let last=0; const navbar=document.querySelector('.navbar');
+	window.addEventListener('scroll',()=>{
+		const y=window.scrollY;
+		if(y<=0){ navbar?.classList.remove('scroll-up'); }
+		else if(y>last && !navbar?.classList.contains('scroll-down')){ navbar?.classList.remove('scroll-up'); navbar?.classList.add('scroll-down'); }
+		else if(y<last && navbar?.classList.contains('scroll-down')){ navbar?.classList.remove('scroll-down'); navbar?.classList.add('scroll-up'); }
+		last=y;
+	});
+});

@@ -32,6 +32,7 @@ relativeURLs = true
   # Homepage banner image (can be an absolute URL or a path under /static)
   banner_image = '/images/banner.png'
   banner_alt = 'The Anchor banner'
+  twitter_handle = 'humble_nv'
 
 [markup]
   [markup.goldmark]

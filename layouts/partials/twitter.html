@@ -1,0 +1,19 @@
+{{/* Twitter widget embed partial. Configure handle in params.twitter_handle */}}
+{{ $handle := or .Site.Params.twitter_handle "humble_nv" }}
+<div class="twitter-section">
+  <div class="container">
+    <div class="section-header">
+      <div>
+        <div class="section-label">Social</div>
+        <h2>Latest on X</h2>
+      </div>
+      <a class="view-all" href="https://x.com/{{ $handle }}" target="_blank" rel="noopener">Follow</a>
+    </div>
+    <div class="twitter-embed">
+      <a class="twitter-timeline" data-height="520" data-theme="light" href="https://twitter.com/{{ $handle }}?ref_src=twsrc%5Etfw">
+        Tweets by @{{ $handle }}
+      </a>
+    </div>
+  </div>
+</div>
+<script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
