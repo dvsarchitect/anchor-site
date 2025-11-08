@@ -3,7 +3,7 @@
   <div class="container hero-content">
     {{ with .Site.Params.banner_image }}
     <div class="hero-banner">
-      <img src="{{ . | absURL }}" alt="{{ with $.Site.Params.banner_alt }}{{ . }}{{ else }}Site banner{{ end }}">
+      <img src="{{ . | relURL }}" alt="{{ with $.Site.Params.banner_alt }}{{ . }}{{ else }}Site banner{{ end }}">
     </div>
     {{ end }}
     <h1 class="hero-title">Finding our way to Jesus, one verse at a time</h1>
