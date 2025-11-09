@@ -22,11 +22,12 @@
   {{ else }}
     <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
   {{ end }}
-  <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}" />
-  <link rel="stylesheet" href="{{ "css/devotional.css" | relURL }}" />
-  <link rel="stylesheet" href="{{ "css/featured-images.css" | relURL }}" />
   {{ if eq .Site.Params.homepage_variant "refined" }}
     <link rel="stylesheet" href="{{ "css/refined-neutral.css" | relURL }}" />
+  {{ else }}
+    <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "css/devotional.css" | relURL }}" />
+    <link rel="stylesheet" href="{{ "css/featured-images.css" | relURL }}" />
   {{ end }}
   {{- /* Open Graph basics */ -}}
   {{- $ogTitle := cond (ne .Title "") (printf "%s · %s" .Title .Site.Title) .Site.Title -}}
