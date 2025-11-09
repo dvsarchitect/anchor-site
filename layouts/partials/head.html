@@ -7,7 +7,14 @@
   {{ with .Description }}<meta name="description" content="{{ . }}" />{{ end }}
   <meta name="theme-color" content="#ffffff" />
   <!-- Early theme application to avoid flash of incorrect mode -->
-  <script>(function(){try{var s=localStorage.getItem('theme');var prefers=window.matchMedia('(prefers-color-scheme: dark)').matches;var m=s|| (prefers?'dark':'light');document.documentElement.setAttribute('data-theme',m);}catch(e){}})();</script>
+  <script>(function(){
+    try {
+      // Default to light for brand consistency; only use saved choice if present.
+      var saved = localStorage.getItem('theme');
+      var mode = saved || 'light';
+      document.documentElement.setAttribute('data-theme', mode);
+    } catch(e){}
+  })();</script>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   {{ if eq .Site.Params.homepage_variant "refined" }}
