@@ -1,57 +1,37 @@
-<!-- Refined Neutral Homepage (Option 1) -->
-<section class="hero refined-hero">
-  <div class="container hero-grid">
-    <div class="hero-text reveal">
-      <div class="eyebrow">This Week's Feature</div>
-      {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
-      {{ if gt (len $featured) 0 }}
-        {{ $post := index $featured 0 }}
-        <h1>{{ $post.Title }}</h1>
-        {{ with $post.Params.excerpt }}<p class="lead">{{ . }}</p>{{ end }}
-        <div class="primary-actions">
-          <a class="btn btn-primary" href="{{ $post.RelPermalink }}">Read Feature</a>
-          <a class="btn btn-outline" href="/devotionals/">Browse All</a>
+<!-- Refined Neutral Homepage -->
+
+<!-- Hero: Featured Post -->
+{{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
+{{ if gt (len $featured) 0 }}
+  {{ $post := index $featured 0 }}
+  <section class="hero-featured">
+    <div class="container">
+      <div class="featured-content reveal">
+        <div class="featured-text">
+          <div class="eyebrow">Featured This Week</div>
+          <h1>{{ $post.Title }}</h1>
+          {{ with $post.Params.excerpt }}<p class="lead">{{ . }}</p>{{ end }}
+          <div class="featured-meta">
+            <span class="badge">{{ if eq $post.Params.type "friday" }}Friday Depth{{ else }}Monday Momentum{{ end }}</span>
+            <span>{{ $post.Date.Format "Jan 2, 2006" }}</span>
+            <span>{{ $post.ReadingTime }} min read</span>
+          </div>
+          <div class="primary-actions">
+            <a class="btn btn-primary" href="{{ $post.RelPermalink }}">Read Now</a>
+            <a class="btn btn-outline" href="/devotionals/">Browse All</a>
+          </div>
         </div>
-      {{ else }}
-        <h1>Stand Firm This Week</h1>
-        <p class="lead">Weekly devotionals for men who refuse to drift—Monday momentum and Friday depth.</p>
-        <div class="primary-actions">
-          <a class="btn btn-primary" href="/devotionals/">Read Devotionals</a>
+        <div class="featured-image">
+          {{ with $post.Params.image }}
+            <img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="eager">
+          {{ end }}
         </div>
-      {{ end }}
+      </div>
     </div>
-    <aside class="hero-aside">
-      {{ range first 4 (where .Site.RegularPages "Section" "devotionals") }}
-      {{ $post := . }}
-      <article class="hero-card reveal">
-        {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
-        <div class="meta"><span>{{ .Date.Format "Jan 2" }}</span><span>•</span><span>{{ .ReadingTime }} min</span></div>
-        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-        {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
-        <a class="cta" href="{{ .RelPermalink }}">Read</a>
-      </article>
-      {{ end }}
-    </aside>
-  </div>
+  </section>
+{{ end }}
 
-  <hr class="section-divider" />
-
-  <div class="container subscribe-refined reveal" id="subscribe">
-    <div class="subscribe-inner">
-      <h2>Get Monday + Friday in your inbox</h2>
-      <p class="sub-text">No noise. Scripture-first. Unsubscribe anytime.</p>
-      {{ if .Site.Params.substack_embed }}
-        <div class="embed-wrap">{{ .Site.Params.substack_embed | safeHTML }}</div>
-      {{ else }}
-        <form class="subscribe-form">
-          <input type="email" placeholder="you@example.com" aria-label="Email address" required />
-          <button type="submit" class="btn btn-primary">Subscribe Free</button>
-        </form>
-      {{ end }}
-    </div>
-  </div>
-</section>
-
+<!-- Recent Devotionals Grid -->
 <section class="devotionals-refined" id="devotionals">
   <div class="container">
     <div class="section-head">
@@ -59,20 +39,124 @@
       <div class="hint">Two per week—Monday momentum & Friday depth</div>
     </div>
     <div class="grid">
-      {{ range first 6 (where .Site.RegularPages "Section" "devotionals") }}
-        {{ $post := . }}
-        <article class="card reveal" data-type="{{ .Params.type }}">
-          <div class="card-thumb">
-            {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
-          </div>
-          <div class="card-body">
-            <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
-            <h3>{{ .Title }}</h3>
-            {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
-            <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
-          </div>
-        </article>
+      {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
+      {{ $featuredPermalink := "" }}
+      {{ if gt (len $featured) 0 }}
+        {{ $featuredPermalink = (index $featured 0).RelPermalink }}
       {{ end }}
+      
+      {{ $count := 0 }}
+      {{ range .Site.RegularPages }}
+        {{ if and (eq .Section "devotionals") (ne .RelPermalink $featuredPermalink) (lt $count 6) }}
+          {{ $post := . }}
+          <article class="card reveal" data-type="{{ .Params.type }}">
+            <div class="card-thumb">
+              {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
+            </div>
+            <div class="card-body">
+              <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
+              <h3>{{ .Title }}</h3>
+              {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
+              <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
+            </div>
+          </article>
+          {{ $count = add $count 1 }}
+        {{ end }}
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<!-- About Section -->
+<section class="about-section" id="about">
+  <div class="container">
+    <div class="about-refined reveal">
+      <div class="about-content">
+        <div class="about-text">
+          <h2>Why The Anchor?</h2>
+          <p class="lead">Because men need something solid to hold onto.</p>
+          <p>In a culture that tells men to be quiet, ashamed, or perform, we're building something different. This is a place for rooted, honest discipleship. Scripture at the center. Courage at the edges.</p>
+          <p>Every Monday brings momentum to start your week strong. Every Friday offers depth to dig into God's Word. No noise. No outrage cycles. Just slow, anchored growth in Christ.</p>
+          <p>Whether you're fighting to keep going, learning to flee from sin, or pursuing righteousness—you're not alone in this. We're in it together, fixing our eyes on Jesus.</p>
+          
+          <div class="about-cta">
+            <h3>Connect with The Anchor</h3>
+            <div class="social-links-about">
+              {{ with .Site.Params.substack }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link substack">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+                <span>Substack</span>
+              </a>{{ end }}
+              {{ with .Site.Params.twitter }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                <span>X (Twitter)</span>
+              </a>{{ end }}
+              {{ with .Site.Params.facebook }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+                <span>Facebook</span>
+              </a>{{ end }}
+            </div>
+          </div>
+        </div>
+        <div class="about-image">
+          {{ with .Site.Params.logo_url }}
+            <div class="about-logo-display">
+              <img src="{{ . }}" alt="The Anchor logo">
+            </div>
+          {{ end }}
+          <div class="about-stats">
+            <div class="stat-item">
+              <div class="stat-number">2×</div>
+              <div class="stat-label">Weekly</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">100%</div>
+              <div class="stat-label">Scripture-First</div>
+            </div>
+            <div class="stat-item">
+              <div class="stat-number">0</div>
+              <div class="stat-label">Noise</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- What I'm Watching Section -->
+<section class="watching-section" id="watching">
+  <div class="container">
+    <div class="watching-content reveal">
+      <div class="section-head-centered">
+        <h2>What I'm Watching</h2>
+        <p class="section-subtitle">Content that's challenging, encouraging, or worth your time.</p>
+      </div>
+      {{ $videoEmbed := `<div class="youtube-embed"><iframe src="https://www.youtube.com/embed/9UC5Ceq7CsM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>` }}
+      {{ $videoEmbed | safeHTML }}
+    </div>
+  </div>
+</section>
+
+<!-- Subscribe Section -->
+<section class="subscribe-section" id="subscribe">
+  <div class="container">
+    <div class="subscribe-refined reveal">
+      <div class="subscribe-inner">
+        <div class="subscribe-text">
+          <h2>Get Monday + Friday in your inbox</h2>
+          <p class="sub-text">No noise. Scripture-first. Unsubscribe anytime.</p>
+        </div>
+        <div class="subscribe-form-wrap">
+          {{ if .Site.Params.substack_embed }}
+            <div class="embed-wrap">{{ .Site.Params.substack_embed | safeHTML }}</div>
+          {{ else }}
+            <form class="subscribe-form">
+              <input type="email" placeholder="you@example.com" aria-label="Email address" required />
+              <button type="submit" class="btn btn-primary">Subscribe Free</button>
+            </form>
+          {{ end }}
+        </div>
+      </div>
     </div>
   </div>
 </section>
@@ -93,7 +177,7 @@
         img.classList.add('loaded');
       } else {
         img.addEventListener('load', () => img.classList.add('loaded'));
-        img.addEventListener('error', () => img.classList.add('loaded')); // Show even if failed
+        img.addEventListener('error', () => img.classList.add('loaded'));
       }
     });
   })();

@@ -4,7 +4,7 @@ date: 2025-11-07
 type: "friday"
 scripture: "Hebrews 12:1-3"
 featured: true
-image: https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fe38ed038-1ef0-4be7-9a7f-55ff21d056d8_1312x736.png
+image: /images/devotionals/when-fight-feels-hard.webp
 image_alt: "Runner pressing forward on track symbolizing endurance in faith"
 excerpt: "Struggling to stay motivated in your faith? Discover how to run with endurance when the fight feels hard by fixing your eyes on Jesus, not your failures."
 ---

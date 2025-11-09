@@ -1,6 +1,16 @@
 # Intentionally minimal. Primary site configuration lives in config.toml.
 # Keeping this file to avoid confusion with Hugo modules.
 
+title = 'The Anchor'
+
+[params]
+  homepage_variant = 'refined'
+  logo_url = 'https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7debb99-6122-4ef4-bf85-941f3a5a2dde_722x722.png'
+  substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
+  substack = 'https://humblenv.substack.com/'
+  twitter = 'https://x.com/humble_nv'
+  facebook = 'https://www.facebook.com/theanchorinthestorm'
+
 [module]
   # You can pin Hugo version constraints here if needed in the future.
   [module.hugoVersion]

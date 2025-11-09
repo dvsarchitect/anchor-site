@@ -12,13 +12,20 @@
         {{ $isFriday := eq .Params.type "friday" }}
         {{ $cardClass := cond $isFriday "friday-card" "monday-card" }}
         <article class="devotional-card {{ $cardClass }}">
-          <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
-          <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-          {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
-          <div class="card-meta">
-            {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
-            <span class="separator">•</span>
-            <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+          {{ with .Params.image }}
+          <a href="{{ $.RelPermalink }}" class="card-thumb">
+            <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
+          </a>
+          {{ end }}
+          <div class="card-body">
+            <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
+            <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+            {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
+            <div class="card-meta">
+              {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
+              <span class="separator">•</span>
+              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
+            </div>
           </div>
         </article>
       {{ end }}
