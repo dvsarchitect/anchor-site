@@ -1,6 +1,8 @@
 {{ define "main" }}
 {{ if eq .Site.Params.homepage_variant "conversion" }}
   {{ partial "home_conversion.html" . }}
+{{ else if eq .Site.Params.homepage_variant "refined" }}
+  {{ partial "home_refined.html" . }}
 {{ else }}
 <section class="hero">
   <div class="container hero-content">

@@ -35,7 +35,8 @@ relativeURLs = true
   twitter_handle = 'humble_nv'
   logo_url = 'https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7debb99-6122-4ef4-bf85-941f3a5a2dde_722x722.png'
   # Switch homepage layout: 'default' or 'conversion'
-  homepage_variant = 'conversion'
+  # Set to 'refined' to enable the new Refined Neutral Option 1 design
+  homepage_variant = 'refined'
 
 [markup]
   [markup.goldmark]

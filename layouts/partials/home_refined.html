@@ -1,0 +1,86 @@
+<!-- Refined Neutral Homepage (Option 1) -->
+<section class="hero refined-hero">
+  <div class="container hero-grid">
+    <div class="hero-text reveal">
+      <div class="eyebrow">This Week's Feature</div>
+      {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
+      {{ if gt (len $featured) 0 }}
+        {{ $post := index $featured 0 }}
+        <h1>{{ $post.Title }}</h1>
+        {{ with $post.Params.excerpt }}<p class="lead">{{ . }}</p>{{ end }}
+        <div class="primary-actions">
+          <a class="btn btn-primary" href="{{ $post.RelPermalink }}">Read Feature</a>
+          <a class="btn btn-outline" href="/devotionals/">Browse All</a>
+        </div>
+      {{ else }}
+        <h1>Stand Firm This Week</h1>
+        <p class="lead">Weekly devotionals for men who refuse to drift—Monday momentum and Friday depth.</p>
+        <div class="primary-actions">
+          <a class="btn btn-primary" href="/devotionals/">Read Devotionals</a>
+        </div>
+      {{ end }}
+    </div>
+    <aside class="hero-aside">
+      {{ range first 4 (where .Site.RegularPages "Section" "devotionals") }}
+      <article class="hero-card reveal">
+        {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="lazy">{{ end }}
+        <div class="meta"><span>{{ .Date.Format "Jan 2" }}</span><span>•</span><span>{{ .ReadingTime }} min</span></div>
+        <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
+        {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
+        <a class="cta" href="{{ .RelPermalink }}">Read</a>
+      </article>
+      {{ end }}
+    </aside>
+  </div>
+
+  <hr class="section-divider" />
+
+  <div class="container subscribe-refined reveal" id="subscribe">
+    <div class="subscribe-inner">
+      <h2>Get Monday + Friday in your inbox</h2>
+      <p class="sub-text">No noise. Scripture-first. Unsubscribe anytime.</p>
+      {{ if .Site.Params.substack_embed }}
+        <div class="embed-wrap">{{ .Site.Params.substack_embed | safeHTML }}</div>
+      {{ else }}
+        <form class="subscribe-form">
+          <input type="email" placeholder="you@example.com" aria-label="Email address" required />
+          <button type="submit" class="btn btn-primary">Subscribe Free</button>
+        </form>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<section class="devotionals-refined" id="devotionals">
+  <div class="container">
+    <div class="section-head">
+      <h2>Recent Devotionals</h2>
+      <div class="hint">Two per week—Monday momentum & Friday depth</div>
+    </div>
+    <div class="grid">
+      {{ range first 6 (where .Site.RegularPages "Section" "devotionals") }}
+        <article class="card reveal" data-type="{{ .Params.type }}">
+          <div class="card-thumb">
+            {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="lazy">{{ end }}
+          </div>
+          <div class="card-body">
+            <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
+            <h3>{{ .Title }}</h3>
+            {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
+            <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
+          </div>
+        </article>
+      {{ end }}
+    </div>
+  </div>
+</section>
+
+<script>
+  (function(){
+    const reveals = document.querySelectorAll('.reveal');
+    const io = new IntersectionObserver((entries)=>{
+      entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target);} });
+    }, { threshold: 0.15 });
+    reveals.forEach(el=> io.observe(el));
+  })();
+</script>
