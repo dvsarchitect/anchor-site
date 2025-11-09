@@ -22,8 +22,9 @@
     </div>
     <aside class="hero-aside">
       {{ range first 4 (where .Site.RegularPages "Section" "devotionals") }}
+      {{ $post := . }}
       <article class="hero-card reveal">
-        {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="lazy">{{ end }}
+        {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
         <div class="meta"><span>{{ .Date.Format "Jan 2" }}</span><span>•</span><span>{{ .ReadingTime }} min</span></div>
         <h3><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
         {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
@@ -59,9 +60,10 @@
     </div>
     <div class="grid">
       {{ range first 6 (where .Site.RegularPages "Section" "devotionals") }}
+        {{ $post := . }}
         <article class="card reveal" data-type="{{ .Params.type }}">
           <div class="card-thumb">
-            {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="lazy">{{ end }}
+            {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
           </div>
           <div class="card-body">
             <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
@@ -77,10 +79,22 @@
 
 <script>
   (function(){
+    // Reveal animation on scroll
     const reveals = document.querySelectorAll('.reveal');
     const io = new IntersectionObserver((entries)=>{
       entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target);} });
     }, { threshold: 0.15 });
     reveals.forEach(el=> io.observe(el));
+    
+    // Handle lazy-loaded images
+    const lazyImages = document.querySelectorAll('img[loading="lazy"]');
+    lazyImages.forEach(img => {
+      if (img.complete) {
+        img.classList.add('loaded');
+      } else {
+        img.addEventListener('load', () => img.classList.add('loaded'));
+        img.addEventListener('error', () => img.classList.add('loaded')); // Show even if failed
+      }
+    });
   })();
 </script>
