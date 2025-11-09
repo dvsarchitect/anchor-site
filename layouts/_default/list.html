@@ -1,31 +1,21 @@
 {{ define "main" }}
-<section class="devotionals-grid-section">
+<section class="devotionals-refined" id="devotionals">
   <div class="container">
-    <div class="section-header">
-      <div>
-        <div class="section-label">Devotionals</div>
-        <h2>All Devotionals</h2>
-      </div>
+    <div class="section-head">
+      <h2>All Devotionals</h2>
+      <div class="hint">Two per week—Monday momentum & Friday depth</div>
     </div>
-    <div class="devotionals-grid">
+    <div class="grid">
       {{ range .Paginator.Pages }}
-        {{ $isFriday := eq .Params.type "friday" }}
-        {{ $cardClass := cond $isFriday "friday-card" "monday-card" }}
-        <article class="devotional-card {{ $cardClass }}">
-          {{ with .Params.image }}
-          <a href="{{ $.RelPermalink }}" class="card-thumb">
-            <img src="{{ . }}" alt="{{ $.Title }}" loading="lazy">
-          </a>
-          {{ end }}
+        <article class="card reveal is-visible" data-type="{{ .Params.type }}">
+          <div class="card-thumb">
+            {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="lazy">{{ end }}
+          </div>
           <div class="card-body">
-            <div class="card-label">{{ if $isFriday }}Friday Deep Dive{{ else }}Monday Encouragement{{ end }}</div>
-            <h3 class="card-title"><a href="{{ .RelPermalink }}">{{ .Title }}</a></h3>
-            {{ with .Params.excerpt }}<p class="card-excerpt">{{ . }}</p>{{ end }}
-            <div class="card-meta">
-              {{ with .Params.scripture }}<span class="scripture-ref">{{ . }}</span>{{ end }}
-              <span class="separator">•</span>
-              <span>{{ .Date.Format "Jan 2, 2006" }}</span>
-            </div>
+            <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
+            <h3>{{ .Title }}</h3>
+            {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
+            <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
           </div>
         </article>
       {{ end }}
