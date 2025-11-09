@@ -4,7 +4,7 @@ date: 2025-11-03
 type: "monday"
 scripture: "Ephesians 6:12-13"
 featured: false
-image: "https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a8be8c4-ea5e-4f17-9c66-1a6b93f26f4f_1792x1024.png"
+image: https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F8a8be8c4-ea5e-4f17-9c66-1a6b93f26f4f_1792x1024.png
 image_alt: "Man standing firm with belt of truth symbolizing spiritual readiness"
 excerpt: "Beat down from the grind? Ephesians 6:12 says it's a spiritual fight. Suit up with God's truth and stand firm."
 ---

@@ -7,7 +7,7 @@ categories: ["Bible Study", "Personal Reflections"]
 tags: ["Armor of God", "Ephesians", "Truth", "Spiritual Warfare"]
 series: "Armor of God"
 featured: false
-image: "https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81c39408-e99f-4cbb-b17d-c24f19e3e820_1024x1024.png"
+image: https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F81c39408-e99f-4cbb-b17d-c24f19e3e820_1024x1024.png
 image_alt: "Person standing firm with armor representing spiritual readiness"
 excerpt: "This Monday, I'm breaking down what it actually means to stand firm in a world trying to knock you down—starting with the belt of truth."
 social_source: "substack"

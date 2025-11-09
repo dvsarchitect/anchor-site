@@ -6,7 +6,7 @@ scripture: "1 Timothy 6:11-16"
 categories: ["Bible Study", "Masculinity"]
 tags: ["Biblical Masculinity", "1 Timothy", "Character", "Discipleship"]
 featured: false
-image: "https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0c8827f3-8e63-4bb7-9a15-5e6e36c676f3_1024x1024.png"
+image: https://substackcdn.com/image/fetch/w_1280,h_853,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2F0c8827f3-8e63-4bb7-9a15-5e6e36c676f3_1024x1024.png
 image_alt: "Silhouette of man standing firm representing biblical masculinity"
 excerpt: "Our culture says men are toxic and confused. This post challenges that narrative, arguing that true biblical masculinity isn't passive or toxic—it's purposeful."
 social_source: "substack"
