@@ -37,12 +37,12 @@
   --color-friday: #1f3a5f !important;         /* Friday badge - navy */
 
   /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06);
-  --shadow-md: 0 4px 14px rgba(0,0,0,0.08);
-  --shadow-lg: 0 10px 32px rgba(0,0,0,0.12);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.06) !important;
+  --shadow-md: 0 4px 14px rgba(0,0,0,0.08) !important;
+  --shadow-lg: 0 10px 32px rgba(0,0,0,0.12) !important;
   
   /* Motion */
-  --ease: cubic-bezier(.22,.61,.36,1);
+  --ease: cubic-bezier(.22,.61,.36,1) !important;
 }
 
 [data-theme="dark"] {
@@ -56,56 +56,45 @@
   --color-accent: #7aa0e8 !important;
   --color-accent-light: #9dbaf1 !important;
   --color-friday: #7aa0e8 !important;
-  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4);
-  --shadow-md: 0 4px 16px rgba(0,0,0,0.5);
-  --shadow-lg: 0 12px 40px rgba(0,0,0,0.55);
+  --shadow-sm: 0 1px 2px rgba(0,0,0,0.4) !important;
+  --shadow-md: 0 4px 16px rgba(0,0,0,0.5) !important;
+  --shadow-lg: 0 12px 40px rgba(0,0,0,0.55) !important;
 }
 
-
-/* ========== REFINED NEUTRAL PALETTE ========== */
-/* Force override legacy styles.css with !important flags */
-:root {
-  /* Primary palette - neutral grays */
-  --color-primary: #222222 !important;
-  --color-bg: #ffffff !important;
-  --color-bg-alt: #f9f9f9 !important;
-  --color-bg-inset: #f5f5f5 !important;
-  --color-text: #3a3a3a !important;
-  --color-text-light: #7a7a7a !important;
-  --color-border: #e2e2e2 !important;
-  
-  /* Accent - deep navy (links/CTAs ONLY) */
-  --color-accent: #1f3a5f !important;
-  --color-accent-light: #2c5282 !important;
-  
-  /* Neutral shades */
-  --neutral-50: #f9f9f9 !important;
-  --neutral-100: #f5f5f5 !important;
-  --neutral-200: #e2e2e2 !important;
-  --neutral-400: #c8c8c8 !important;
-  --neutral-500: #7a7a7a !important;
-  --neutral-600: #555555 !important;
-  --neutral-800: #222222 !important;
-  
-  /* Shadows */
-  --shadow-sm: 0 1px 2px rgba(0,0,0,.05) !important;
-  --shadow-md: 0 4px 6px rgba(0,0,0,.08) !important;
-  --shadow-lg: 0 12px 24px rgba(0,0,0,.12) !important;
-  
-  /* Easing */
-  --ease: cubic-bezier(.4,0,.2,1) !important;
+/* ========== NAVBAR SPECIFIC OVERRIDES ========== */
+/* Force navbar to use neutral grays, not blues */
+.navbar {
+  background: rgba(255,255,255,.95) !important;
+  border-bottom: 1px solid #e2e2e2 !important;
 }
 
-[data-theme="dark"] {
-  --color-primary: #f0f0f0 !important;
-  --color-bg: #111111 !important;
-  --color-bg-alt: #1a1a1a !important;
-  --color-bg-inset: #222222 !important;
-  --color-text: #c8c8c8 !important;
-  --color-text-light: #7a7a7a !important;
-  --color-border: #2a2a2a !important;
-  --color-accent: #4a7fb8 !important;
-  --color-accent-light: #5a8fc8 !important;
+.logo {
+  color: #222222 !important; /* Dark gray, NOT blue */
+}
+
+.nav-links a {
+  color: #3a3a3a !important; /* Body gray */
+}
+
+.nav-links a:hover {
+  color: #1f3a5f !important; /* Navy accent on hover ONLY */
+}
+
+[data-theme="dark"] .navbar {
+  background: rgba(15,17,21,.9) !important;
+  border-color: #2a2e36 !important;
+}
+
+[data-theme="dark"] .logo {
+  color: #f1f1f1 !important;
+}
+
+[data-theme="dark"] .nav-links a {
+  color: #e6e6e6 !important;
+}
+
+[data-theme="dark"] .nav-links a:hover {
+  color: #7aa0e8 !important;
 }
 
 /* Typography - Playfair for headings, Inter for body */
@@ -125,8 +114,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .hero-aside{grid-column:span 6;display:grid;grid-template-columns:repeat(6,1fr);gap:1.5rem}
 .hero-card{grid-column:span 3;display:flex;flex-direction:column;background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:12px;overflow:hidden;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .hero-card:hover{transform:translateY(-6px);box-shadow:var(--shadow-lg)}
-.hero-card img{height:220px;width:100%;object-fit:cover;display:block;transition:transform .6s var(--ease)}
-.hero-card:hover img{transform:scale(1.03)}
 .hero-card .meta{display:flex;align-items:center;gap:.75rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--color-text-light);padding:.85rem 1rem .25rem}
 .hero-card h3{font-size:clamp(1.1rem,1rem + .3vw,1.35rem);padding:0 1rem .2rem;color:var(--color-primary)}
 .hero-card h3 a{color:var(--color-primary);text-decoration:none}
@@ -166,7 +153,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .card{background:var(--color-bg-alt);border:1px solid var(--color-border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column;transition:transform .4s var(--ease),box-shadow .4s var(--ease)}
 .card:hover{transform:translateY(-8px);box-shadow:var(--shadow-lg)}
 .card-thumb{position:relative;height:260px;width:100%;background:var(--neutral-100);overflow:hidden}
-.card-thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.card-thumb img{width:100%;height:100%;object-fit:cover;display:block !important;opacity:1 !important}
+.card-thumb img[loading="lazy"]{opacity:0;transition:opacity .3s ease}
+.card-thumb img[loading="lazy"].loaded{opacity:1 !important}
 .card-body{padding:1.6rem;display:flex;flex-direction:column;flex:1}
 .card-meta{display:flex;align-items:center;gap:.75rem;font-size:.8rem;font-weight:600;letter-spacing:.08em;color:var(--color-text-light);text-transform:uppercase;margin-bottom:.9rem}
 .badge{background:var(--neutral-100);padding:.25rem .6rem;border-radius:4px;color:var(--color-text)}
@@ -174,6 +163,12 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .card p{font-size:.98rem;flex-grow:1;margin-bottom:1.2rem;color:var(--color-text)}
 .card a.more{font-size:.95rem;font-weight:500;color:var(--color-accent);text-decoration:none}
 .card a.more:hover{color:var(--color-accent-light)}
+
+/* Hero card images */
+.hero-card img{height:220px;width:100%;object-fit:cover;display:block !important;transition:transform .6s var(--ease);opacity:1 !important}
+.hero-card img[loading="lazy"]{opacity:0;transition:opacity .3s ease, transform .6s var(--ease)}
+.hero-card img[loading="lazy"].loaded{opacity:1 !important}
+.hero-card:hover img{transform:scale(1.03)}
 
 /* Reveal animation */
 .reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
