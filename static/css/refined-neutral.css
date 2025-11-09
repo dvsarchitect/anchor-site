@@ -202,11 +202,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .featured-image{position:relative;border-radius:16px;overflow:hidden;aspect-ratio:16/10;box-shadow:var(--shadow-lg)}
 .featured-image img{width:100%;height:100%;object-fit:cover;display:block;opacity:1 !important}
 
-@media(max-width:900px){
-  .featured-content{grid-template-columns:1fr;gap:2rem}
-  .featured-image{aspect-ratio:16/9}
-}
-
 /* Buttons */
 .primary-actions{display:flex;gap:1.1rem;flex-wrap:wrap}
 .btn{cursor:pointer;font-weight:500;font-size:.95rem;border:none;padding:.95rem 1.6rem;border-radius:8px;display:inline-flex;align-items:center;gap:.5rem;transition:background .3s,color .3s,box-shadow .3s;text-decoration:none}
@@ -253,12 +248,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .stat-item{text-align:center;padding:1.5rem 1rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px}
 .stat-number{font-size:2.25rem;font-weight:700;color:var(--color-accent);margin-bottom:.35rem;font-family:'Playfair Display',serif}
 .stat-label{font-size:.85rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
-@media(max-width:900px){
-  .about-content{grid-template-columns:1fr;gap:3rem}
-  .about-text{max-width:100%}
-  .about-logo-display{max-width:240px}
-  .about-stats{gap:1rem}
-}
 
 /* ========== WHAT I'M WATCHING SECTION ========== */
 .watching-section{padding:4rem 0;background:var(--color-bg)}
@@ -266,10 +255,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .section-head-centered{text-align:center;margin-bottom:2.5rem}
 .section-head-centered h2{color:var(--color-primary);font-size:clamp(2rem,1.8rem + .6vw,2.5rem);margin-bottom:.75rem}
 .section-head-centered .section-subtitle{color:var(--color-text);font-size:1.1rem;margin:0}
-@media(max-width:900px){
-  .watching-section{padding:3rem 0}
-  .section-head-centered{margin-bottom:2rem}
-}
 
 /* ========== SUBSCRIBE SECTION ========== */
 .subscribe-section{padding:3rem 0 4rem;background:var(--color-bg)}
@@ -282,10 +267,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .embed-wrap iframe{max-width:100%;border-radius:8px !important;box-shadow:0 2px 8px rgba(0,0,0,.1) !important}
 .subscribe-form{display:flex;gap:.75rem;width:100%}
 .subscribe-form input{flex:1;padding:.95rem 1.25rem;border:1px solid var(--color-border);border-radius:8px;background:var(--color-bg);color:var(--color-text);font-size:.95rem}
-@media(max-width:900px){
-  .subscribe-inner{grid-template-columns:1fr;gap:2rem;padding:2rem}
-  .subscribe-form-wrap{justify-content:center}
-}
 
 /* ========== CARDS GRID (Recent Devotionals) ========== */
 .devotionals-refined{padding:3rem 0;background:var(--color-bg)}
@@ -313,24 +294,9 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .hero-card:hover img{transform:scale(1.03)}
 
 /* ========== DEVOTIONALS GRID ========== */
-.devotionals-refined{padding:4rem 0}
-.reveal{opacity:0;transform:translateY(18px);transition:opacity .6s var(--ease),transform .6s var(--ease)}
-.reveal.is-visible{opacity:1;transform:translateY(0)}
-
-/* Responsive */
-@media(max-width:1100px){.hero-text{grid-column:span 12;margin-bottom:3rem}.hero-aside{grid-column:span 12;grid-template-columns:repeat(12,1fr)}.hero-card{grid-column:span 3}}
-@media(max-width:900px){.hero-card{grid-column:span 4}}
-@media(max-width:760px){.hero-card{grid-column:span 6}.section-head{flex-direction:column;align-items:flex-start;gap:.75rem}}
-@media(max-width:560px){.hero-card{grid-column:span 12}.hero-text h1{font-size:clamp(1.8rem,1.5rem + 2vw,2.4rem)}}
-
-/* ========== YOUTUBE EMBED ========== */
 .youtube-embed{position:relative;width:100%;max-width:800px;margin:2rem auto;padding-bottom:56.25%;height:0;overflow:hidden;border-radius:12px;box-shadow:var(--shadow-lg);background:var(--neutral-900)}
 .youtube-embed iframe{position:absolute;top:0;left:0;width:100%;height:100%;border:0;border-radius:12px}
 [data-theme="dark"] .youtube-embed{box-shadow:0 10px 40px rgba(0,0,0,.4)}
-@media(max-width:900px){
-  .youtube-embed{max-width:100%;margin:1.5rem 0;border-radius:8px}
-  .youtube-embed iframe{border-radius:8px}
-}
 
 /* ========== FOOTER ========== */
 .footer{background:var(--neutral-50);border-top:1px solid var(--neutral-200);padding:3rem 0 1.5rem;margin-top:4rem}
@@ -355,16 +321,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 [data-theme="dark"] .footer-bottom{border-color:var(--neutral-800);color:var(--neutral-500)}
 [data-theme="dark"] .footer-bottom a{color:var(--neutral-400)}
 [data-theme="dark"] .footer-bottom a:hover{color:var(--neutral-50)}
-
-/* Footer Responsive */
-@media(max-width:900px){
-  .footer-content{grid-template-columns:1fr;gap:2rem}
-  .footer-links{gap:1.5rem}
-}
-@media(max-width:560px){
-  .footer-links{grid-template-columns:1fr;gap:1.5rem}
-  .footer-bottom{flex-direction:column;gap:.75rem;text-align:center}
-}
 
 /* ========== DEVOTIONAL SINGLE PAGE ========== */
 .devotional-article{padding:0}
@@ -409,14 +365,6 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 [data-theme="dark"] .author-card{background:var(--color-bg);border-color:var(--neutral-800)}
 [data-theme="dark"] .share-btn{background:var(--color-bg);border-color:var(--neutral-800)}
 [data-theme="dark"] .share-btn:hover{background:var(--color-accent);border-color:var(--color-accent)}
-
-/* Article Responsive */
-@media(max-width:760px){
-  .article-title{font-size:2rem}
-  .article-body{font-size:1.0625rem}
-  .article-hero-image{margin:1.5rem 0}
-  .ratio-21-9{aspect-ratio:16/9}
-}
 
 /* ========== PAGINATION ========== */
 .pagination{display:flex;justify-content:center;align-items:center;gap:1rem;margin-top:4rem;padding-top:3rem;border-top:1px solid var(--color-border)}
