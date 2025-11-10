@@ -1,6 +1,6 @@
 ---
 title: "When the World Feels Unreal: Standing Firm in Crazy Times"
-date: 2025-11-11
+date: 2025-11-09
 type: "monday"
 scripture: "2 Timothy 3:1-5"
 featured: true
