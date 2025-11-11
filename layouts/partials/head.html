@@ -37,5 +37,8 @@
   <meta property="og:url" content="{{ .Permalink }}"/>
   {{ with $ogImage }}<meta property="og:image" content="{{ . }}"/>{{ end }}
   <meta name="twitter:card" content="summary_large_image"/>
+  
+  {{- /* Google Analytics */ -}}
+  {{ partial "google-analytics.html" . }}
 </head>
 <body>

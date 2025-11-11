@@ -1,0 +1,40 @@
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-KGFPGY9Q6M"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-KGFPGY9Q6M', {
+    'anonymize_ip': true,
+    'cookie_flags': 'SameSite=None;Secure'
+  });
+
+  // Track outbound links
+  document.addEventListener('click', function(e) {
+    if (e.target.tagName === 'A' && e.target.hostname !== window.location.hostname) {
+      gtag('event', 'click', {
+        'event_category': 'outbound',
+        'event_label': e.target.href
+      });
+    }
+  });
+
+  // Track scroll depth
+  let scrollDepths = [25, 50, 75, 100];
+  let triggered = {};
+  
+  window.addEventListener('scroll', function() {
+    let scrollPercent = (window.scrollY / (document.documentElement.scrollHeight - window.innerHeight)) * 100;
+    
+    scrollDepths.forEach(function(depth) {
+      if (scrollPercent >= depth && !triggered[depth]) {
+        triggered[depth] = true;
+        gtag('event', 'scroll', {
+          'event_category': 'engagement',
+          'event_label': depth + '%'
+        });
+      }
+    });
+  });
+</script>
