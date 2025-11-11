@@ -4,7 +4,7 @@ date: 2025-11-09
 type: "monday"
 scripture: "2 Timothy 3:1-5"
 featured: true
-image: /images/devotionals/when-the-world-feels-unreal.png
+image: /images/devotionals/when-the-world-feels-unreal.webp
 image_alt: "Bold text on dark background reading 'The World is Losing its Mind - We Don't Have to Lose Ours'"
 excerpt: "Does the world feel like it's losing its mind? Paul warned about these chaotic times 2,000 years ago. Here's how to stand firm and guard your mind when everything feels unreal."
 categories: ["Bible Study", "Cultural Commentary"]

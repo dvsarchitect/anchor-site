@@ -30,7 +30,7 @@ relativeURLs = true
   default_og_image = '/images/default-og.svg'
   substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
   # Homepage banner image (can be an absolute URL or a path under /static)
-  banner_image = '/images/banner.png'
+  banner_image = '/images/banner.webp'
   banner_alt = 'The Anchor banner'
   twitter_handle = 'humble_nv'
   logo_url = 'https://substackcdn.com/image/fetch/w_80,h_80,c_fill,f_webp,q_auto:good,fl_progressive:steep,g_auto/https%3A%2F%2Fsubstack-post-media.s3.amazonaws.com%2Fpublic%2Fimages%2Fa7debb99-6122-4ef4-bf85-941f3a5a2dde_722x722.png'
