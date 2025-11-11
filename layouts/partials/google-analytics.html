@@ -12,10 +12,56 @@
 
   // Track outbound links
   document.addEventListener('click', function(e) {
-    if (e.target.tagName === 'A' && e.target.hostname !== window.location.hostname) {
+    var link = e.target.closest('a');
+    if (!link) return;
+    
+    var href = link.href;
+    var hostname = link.hostname;
+    
+    // Track outbound links (external sites)
+    if (hostname && hostname !== window.location.hostname) {
       gtag('event', 'click', {
         'event_category': 'outbound',
-        'event_label': e.target.href
+        'event_label': href,
+        'event_name': 'outbound_link_click'
+      });
+    }
+    
+    // Track Subscribe button clicks
+    if (link.classList.contains('nav-subscribe') || link.href.includes('#subscribe')) {
+      gtag('event', 'subscribe_click', {
+        'event_category': 'engagement',
+        'event_label': 'Subscribe Button'
+      });
+    }
+    
+    // Track social media clicks
+    if (link.classList.contains('social-link') || link.closest('.social-links-about')) {
+      var platform = 'unknown';
+      if (href.includes('substack.com')) platform = 'Substack';
+      else if (href.includes('x.com') || href.includes('twitter.com')) platform = 'Twitter/X';
+      else if (href.includes('facebook.com')) platform = 'Facebook';
+      
+      gtag('event', 'social_click', {
+        'event_category': 'social',
+        'event_label': platform,
+        'platform': platform
+      });
+    }
+    
+    // Track "Read Now" / "Read devotional" clicks
+    if (link.classList.contains('btn-primary') || link.classList.contains('more')) {
+      var devotionalTitle = '';
+      var card = link.closest('.card') || link.closest('.featured-content');
+      if (card) {
+        var heading = card.querySelector('h1, h3');
+        if (heading) devotionalTitle = heading.textContent.trim();
+      }
+      
+      gtag('event', 'read_devotional', {
+        'event_category': 'content',
+        'event_label': devotionalTitle || href,
+        'devotional_title': devotionalTitle
       });
     }
   });
@@ -32,9 +78,43 @@
         triggered[depth] = true;
         gtag('event', 'scroll', {
           'event_category': 'engagement',
-          'event_label': depth + '%'
+          'event_label': depth + '%',
+          'scroll_depth': depth
         });
       }
     });
   });
+  
+  // Track video plays (YouTube embeds)
+  window.addEventListener('load', function() {
+    var iframes = document.querySelectorAll('iframe[src*="youtube.com"]');
+    iframes.forEach(function(iframe) {
+      iframe.addEventListener('load', function() {
+        gtag('event', 'video_load', {
+          'event_category': 'video',
+          'event_label': iframe.src
+        });
+      });
+    });
+  });
+  
+  // Track time on page (for devotional engagement)
+  var timeOnPage = 0;
+  var maxTime = 600; // 10 minutes max tracking
+  var interval = setInterval(function() {
+    timeOnPage += 30;
+    
+    // Track at 30s, 60s, 2min, 5min milestones
+    if (timeOnPage === 30 || timeOnPage === 60 || timeOnPage === 120 || timeOnPage === 300) {
+      gtag('event', 'time_on_page', {
+        'event_category': 'engagement',
+        'event_label': timeOnPage + ' seconds',
+        'time_seconds': timeOnPage
+      });
+    }
+    
+    if (timeOnPage >= maxTime) {
+      clearInterval(interval);
+    }
+  }, 30000); // Check every 30 seconds
 </script>
