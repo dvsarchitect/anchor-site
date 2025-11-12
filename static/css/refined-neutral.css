@@ -232,12 +232,15 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .about-text p{font-size:1.05rem;line-height:1.7;color:var(--color-text);margin-bottom:1.25rem}
 .about-cta{margin-top:2.5rem;padding-top:2.5rem;border-top:1px solid var(--color-border)}
 .about-cta h3{font-size:1.35rem;color:var(--color-primary);margin-bottom:1.25rem}
-.social-links-about{display:flex;gap:1rem;flex-wrap:wrap}
-.social-link{display:inline-flex;align-items:center;gap:.65rem;padding:.85rem 1.35rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);text-decoration:none;font-weight:500;font-size:.95rem;transition:all .3s var(--ease)}
+.social-links-about{display:grid;grid-template-columns:repeat(3, 1fr);gap:1rem;max-width:700px}
+.social-link{display:inline-flex;align-items:center;gap:.65rem;padding:.85rem 1.35rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:8px;color:var(--color-text);text-decoration:none;font-weight:500;font-size:.95rem;transition:all .3s var(--ease);justify-content:center}
 .social-link:hover{transform:translateY(-2px);box-shadow:var(--shadow-md);border-color:var(--color-accent)}
 .social-link.substack:hover{background:#ff6719;color:#fff;border-color:#ff6719}
+.social-link.youtube:hover{background:#ff0000;color:#fff;border-color:#ff0000}
 .social-link.twitter:hover{background:#000;color:#fff;border-color:#000}
+.social-link.instagram:hover{background:#e4405f;color:#fff;border-color:#e4405f}
 .social-link.facebook:hover{background:#1877f2;color:#fff;border-color:#1877f2}
+.social-link.tiktok:hover{background:#000;color:#fff;border-color:#000}
 .social-link svg{width:20px;height:20px;flex-shrink:0}
 [data-theme="dark"] .social-link{background:var(--color-border);border-color:var(--neutral-600)}
 [data-theme="dark"] .social-link:hover{background:var(--color-accent);color:var(--color-bg);border-color:var(--color-accent)}
@@ -455,7 +458,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
   .stat-item{padding:1.25rem .75rem !important}
   .stat-number{font-size:1.75rem !important}
   .stat-label{font-size:.75rem !important}
-  .social-links-about{flex-direction:column !important;gap:.85rem !important}
+  .social-links-about{grid-template-columns:repeat(2, 1fr) !important;gap:.75rem !important}
   .social-link{width:100% !important;justify-content:center !important;padding:.85rem 1.1rem !important;font-size:.9rem !important}
   
   /* WATCHING SECTION */
