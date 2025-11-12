@@ -259,6 +259,17 @@ h1,h2,h3,h4,h5,h6{font-family:'Plus Jakarta Sans',Inter,sans-serif;color:var(--c
 .section-head-centered h2{color:var(--color-primary);font-size:clamp(2rem,1.8rem + .6vw,2.5rem);margin-bottom:.75rem}
 .section-head-centered .section-subtitle{color:var(--color-text);font-size:1.1rem;margin:0}
 
+/* ========== SUPPORT SECTION (Web3/BAT) ========== */
+.support-section{padding:3rem 0;background:var(--color-surface)}
+.support-content{text-align:center}
+.support-options{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;margin-top:2.5rem}
+.support-card{background:var(--color-bg);border:1px solid var(--color-border);border-radius:14px;padding:2rem 1.5rem;text-align:center;transition:all .3s var(--ease)}
+.support-card:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.support-icon{font-size:3rem;margin-bottom:1rem}
+.support-card h3{font-size:1.25rem;color:var(--color-primary);margin-bottom:.75rem}
+.support-card p{color:var(--color-text-light);font-size:.95rem;margin-bottom:1.5rem}
+.support-card .btn{margin-top:.5rem}
+
 /* ========== SUBSCRIBE SECTION ========== */
 .subscribe-section{padding:3rem 0 4rem;background:var(--color-bg)}
 .subscribe-refined{padding:0}
@@ -466,6 +477,11 @@ h1,h2,h3,h4,h5,h6{font-family:'Plus Jakarta Sans',Inter,sans-serif;color:var(--c
   
   /* WATCHING SECTION */
   .watching-section{padding:2.5rem 0 !important}
+  
+  /* SUPPORT SECTION */
+  .support-section{padding:2.5rem 0 !important}
+  .support-options{grid-template-columns:1fr !important;gap:1.5rem !important}
+  .support-card{padding:1.5rem !important}
   
   /* SUBSCRIBE SECTION */
   .subscribe-section{padding:2.5rem 0 3rem !important}
