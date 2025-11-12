@@ -102,9 +102,9 @@ img[loading="lazy"] {
   display: flex !important;
   align-items: center !important;
   gap: .625rem !important;
-  font-family: 'Playfair Display', Georgia, serif !important;
+  font-family: 'Plus Jakarta Sans', Inter, sans-serif !important;
   font-size: 1.375rem !important;
-  font-weight: 700 !important;
+  font-weight: 800 !important;
   text-decoration: none !important;
   flex-shrink: 0 !important;
 }
@@ -183,10 +183,10 @@ img[loading="lazy"] {
   background: var(--color-bg-alt) !important;
 }
 
-/* Typography - Playfair for headings, Inter for body */
+/* Typography - Plus Jakarta Sans for headings, Inter for body */
 body{font-family:Inter,-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;background:var(--color-bg);color:var(--color-text);} 
-h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color-primary);line-height:1.15;margin:0 0 .75rem}
-.hero .lead{font-family:'Playfair Display',Georgia,serif;color:var(--color-primary);}
+h1,h2,h3,h4,h5,h6{font-family:'Plus Jakarta Sans',Inter,sans-serif;color:var(--color-primary);line-height:1.2;margin:0 0 .75rem;font-weight:700}
+.hero .lead{font-family:'Plus Jakarta Sans',Inter,sans-serif;color:var(--color-primary);font-weight:600}
 
 /* Container - needed for navbar and layout */
 .container{max-width:1320px;margin:0 auto;padding:0 2rem}
@@ -249,7 +249,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
 .about-logo-display img{width:100%;height:auto;display:block;border-radius:12px}
 .about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
 .stat-item{text-align:center;padding:1.5rem 1rem;background:var(--color-bg);border:1px solid var(--color-border);border-radius:12px}
-.stat-number{font-size:2.25rem;font-weight:700;color:var(--color-accent);margin-bottom:.35rem;font-family:'Playfair Display',serif}
+.stat-number{font-size:2.25rem;font-weight:800;color:var(--color-accent);margin-bottom:.35rem;font-family:'Plus Jakarta Sans',sans-serif}
 .stat-label{font-size:.85rem;color:var(--color-text-light);text-transform:uppercase;letter-spacing:.08em;font-weight:600}
 
 /* ========== WHAT I'M WATCHING SECTION ========== */
@@ -409,12 +409,15 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
     top:60px !important;
     left:0 !important;
     right:0 !important;
-    background:var(--color-surface) !important;
+    background:var(--color-bg) !important;
+    opacity:0.95 !important;
+    backdrop-filter:blur(10px) !important;
     flex-direction:column !important;
     padding:1.5rem !important;
     gap:0.75rem !important;
-    box-shadow:0 4px 12px rgba(0,0,0,0.15) !important;
+    box-shadow:0 4px 12px rgba(0,0,0,0.3) !important;
     border-top:1px solid var(--color-border) !important;
+    border-bottom:1px solid var(--color-border) !important;
     z-index:1000 !important;
   }
   .nav-links.mobile-active{display:flex !important}
@@ -458,8 +461,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
   .stat-item{padding:1.25rem .75rem !important}
   .stat-number{font-size:1.75rem !important}
   .stat-label{font-size:.75rem !important}
-  .social-links-about{grid-template-columns:1fr !important;gap:.75rem !important;max-width:100% !important}
-  .social-link{width:100% !important;justify-content:center !important;padding:.85rem 1rem !important;font-size:.9rem !important}
+  .social-links-about{display:grid !important;grid-template-columns:1fr !important;gap:.75rem !important;max-width:100% !important;width:100% !important}
+  .social-link{display:flex !important;width:100% !important;box-sizing:border-box !important;justify-content:center !important;padding:.85rem 1rem !important;font-size:.9rem !important}
   
   /* WATCHING SECTION */
   .watching-section{padding:2.5rem 0 !important}
@@ -508,7 +511,7 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
   /* ABOUT */
   .about-stats{grid-template-columns:1fr !important;gap:.75rem !important}
   .stat-item{padding:1rem !important}
-  .social-links-about{flex-direction:column !important}
+  /* .social-links-about is already grid with 1fr column from 760px breakpoint - no flex needed */
   .social-link{width:100% !important;justify-content:center !important}
   
   /* SUBSCRIBE */

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <style>
+      .anchor { fill: #2c3e50; }
+    </style>
+  </defs>
+  <!-- Anchor symbol -->
+  <path class="anchor" d="M50 10 L50 60 M50 15 A8 8 0 1 1 50 14.9 M35 35 L65 35 M30 60 A20 20 0 0 0 50 75 A20 20 0 0 0 70 60 L70 55 L65 55 L65 60 A15 15 0 0 1 50 70 A15 15 0 0 1 35 60 L35 55 L30 55 Z M30 75 L25 85 L35 75 M70 75 L65 75 L75 85"/>
+</svg>
