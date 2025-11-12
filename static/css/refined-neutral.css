@@ -458,8 +458,8 @@ h1,h2,h3,h4,h5,h6{font-family:'Playfair Display',Georgia,serif;color:var(--color
   .stat-item{padding:1.25rem .75rem !important}
   .stat-number{font-size:1.75rem !important}
   .stat-label{font-size:.75rem !important}
-  .social-links-about{grid-template-columns:repeat(2, 1fr) !important;gap:.75rem !important}
-  .social-link{width:100% !important;justify-content:center !important;padding:.85rem 1.1rem !important;font-size:.9rem !important}
+  .social-links-about{grid-template-columns:1fr !important;gap:.75rem !important;max-width:100% !important}
+  .social-link{width:100% !important;justify-content:center !important;padding:.85rem 1rem !important;font-size:.9rem !important}
   
   /* WATCHING SECTION */
   .watching-section{padding:2.5rem 0 !important}
