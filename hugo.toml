@@ -2,6 +2,8 @@
 # Keeping this file to avoid confusion with Hugo modules.
 
 title = 'The Anchor'
+canonifyURLs = true
+relativeURLs = true
 
 [params]
   homepage_variant = 'refined'

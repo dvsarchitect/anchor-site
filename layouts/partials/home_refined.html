@@ -143,8 +143,12 @@
         <h2>What I'm Watching</h2>
         <p class="section-subtitle">Content that's challenging, encouraging, or worth your time.</p>
       </div>
-      {{ $videoEmbed := `<div class="youtube-embed"><iframe src="https://www.youtube.com/embed/9UC5Ceq7CsM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>` }}
-      {{ $videoEmbed | safeHTML }}
+      <div class="youtube-embed">
+        <a href="https://www.youtube.com/watch?v=9UC5Ceq7CsM" target="_blank" rel="noopener" style="display:block;position:relative;">
+          <img src="https://img.youtube.com/vi/9UC5Ceq7CsM/maxresdefault.jpg" alt="Watch on YouTube" style="width:100%;border-radius:8px;">
+          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,0,0,0.9);color:white;padding:15px 30px;border-radius:8px;font-weight:600;">▶ Watch on YouTube</div>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -162,7 +166,7 @@
           <div class="support-icon">⚡</div>
           <h3>Tip with BAT</h3>
           <p>Support The Anchor using Basic Attention Token (BAT) directly in Brave browser.</p>
-          <button class="btn btn-primary" onclick="if(window.brave){alert('Enable Brave Rewards to tip!');}else{alert('Please use Brave browser to tip with BAT');}">Tip with BAT</button>
+          <a href="https://brave.com/brave-rewards/" target="_blank" rel="noopener" class="btn btn-primary">Learn About BAT Rewards</a>
         </div>
         <div class="support-card">
           <div class="support-icon">🌐</div>
@@ -189,14 +193,7 @@
           <p class="sub-text">No noise. Scripture-first. Unsubscribe anytime.</p>
         </div>
         <div class="subscribe-form-wrap">
-          {{ if .Site.Params.substack_embed }}
-            <div class="embed-wrap">{{ .Site.Params.substack_embed | safeHTML }}</div>
-          {{ else }}
-            <form class="subscribe-form">
-              <input type="email" placeholder="you@example.com" aria-label="Email address" required />
-              <button type="submit" class="btn btn-primary">Subscribe Free</button>
-            </form>
-          {{ end }}
+          <a href="https://humblenv.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;padding:1rem 2rem;font-size:1.1rem;">Subscribe on Substack</a>
         </div>
       </div>
     </div>
