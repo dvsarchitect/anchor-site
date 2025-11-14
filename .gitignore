@@ -14,3 +14,32 @@ node_modules/
 
 # Logs
 *.log
+
+# Security - Sensitive Files
+.env
+.env.*
+!.env.example
+*.key
+*.pem
+*.p12
+*.pfx
+secrets/
+credentials/
+*secret*
+*credential*
+config.local.*
+
+# Backup files
+*.bak
+*.backup
+*.old
+*.orig
+
+# SSH keys
+id_rsa
+id_dsa
+*.pub
+
+# API tokens
+.npmrc
+.pypirc

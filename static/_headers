@@ -1,16 +1,25 @@
 /*
+  # Security Headers
   X-Frame-Options: DENY
   X-Content-Type-Options: nosniff
   X-XSS-Protection: 1; mode=block
   Referrer-Policy: strict-origin-when-cross-origin
-  Permissions-Policy: geolocation=(), microphone=(), camera=()
-  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://platform.twitter.com https://www.youtube.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; img-src 'self' data: https:; frame-src https://www.youtube.com https://platform.twitter.com https://humblenv.substack.com; connect-src 'self'
+  Permissions-Policy: geolocation=(), microphone=(), camera=(), payment=(), usb=()
+  Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://platform.twitter.com https://www.youtube.com https://syndication.twitter.com; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com data:; img-src 'self' data: https: http:; frame-src https://www.youtube.com https://platform.twitter.com https://humblenv.substack.com; connect-src 'self'; media-src 'self'; object-src 'none'; base-uri 'self'; form-action 'self'; frame-ancestors 'none'; upgrade-insecure-requests
+  Strict-Transport-Security: max-age=31536000; includeSubDomains; preload
 
+# Cache Control for Static Assets
 /css/*
   Cache-Control: public, max-age=31536000, immutable
+
 /js/*
   Cache-Control: public, max-age=31536000, immutable
+
 /images/*
   Cache-Control: public, max-age=31536000
-/font/*
+
+/fonts/*
   Cache-Control: public, max-age=31536000, immutable
+
+/favicon.ico
+  Cache-Control: public, max-age=86400
