@@ -1,0 +1,66 @@
+/* /static/css/custom-cta.css */
+
+:root {
+  --cta-light-bg: #f8f9fa;
+  --cta-light-text: #212529;
+  --cta-light-btn-bg: #0d6efd;
+  --cta-light-btn-text: #ffffff;
+
+  --cta-dark-bg: #2c3e50;
+  --cta-dark-text: #ffffff;
+  --cta-dark-btn-bg: #FF8C00;
+  --cta-dark-btn-text: #212529;
+}
+
+.start-here-cta {
+  --cta-bg: var(--cta-light-bg);
+  --cta-text: var(--cta-light-text);
+  --cta-btn-bg: var(--cta-light-btn-bg);
+  --cta-btn-text: var(--cta-light-btn-text);
+  
+  background-color: var(--cta-bg);
+  color: var(--cta-text);
+  padding: 5rem 0;
+  text-align: center;
+  transition: background-color 0.3s, color 0.3s;
+}
+
+[data-theme="dark"] .start-here-cta {
+  --cta-bg: var(--cta-dark-bg);
+  --cta-text: var(--cta-dark-text);
+  --cta-btn-bg: var(--cta-dark-btn-bg);
+  --cta-btn-text: var(--cta-dark-btn-text);
+}
+
+.start-here-cta .cta-title {
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  color: var(--cta-text);
+}
+
+.start-here-cta .lead {
+  font-size: 1.25rem;
+  color: var(--cta-text);
+  opacity: 0.8;
+  margin-bottom: 2rem;
+}
+
+.start-here-cta .btn-cta {
+  background-color: var(--cta-btn-bg);
+  color: var(--cta-btn-text);
+  border-color: var(--cta-btn-bg);
+  transform: scale(1.1);
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+  padding: 0.75rem 1.5rem;
+  font-size: 1.1rem;
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 0.3rem;
+  transition: transform 0.2s ease-in-out;
+}
+
+.start-here-cta .btn-cta:hover {
+    transform: scale(1.15);
+}

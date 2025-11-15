@@ -36,6 +36,7 @@
     <link rel="stylesheet" href="{{ "css/devotional.css" | relURL }}" />
     <link rel="stylesheet" href="{{ "css/featured-images.css" | relURL }}" />
   {{ end }}
+  <link rel="stylesheet" href="{{ "css/custom-cta.css" | relURL }}" />
   {{- /* Open Graph basics */ -}}
   {{- $ogTitle := cond (ne .Title "") (printf "%s · %s" .Title .Site.Title) .Site.Title -}}
   {{- $ogImage := or .Params.og_image (or .Params.image .Site.Params.default_og_image) -}}
@@ -46,6 +47,5 @@
   <meta name="twitter:card" content="summary_large_image"/>
   
   {{- /* Google Analytics */ -}}
-  {{ partial "google-analytics.html" . }}
 </head>
 <body>
