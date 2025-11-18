@@ -31,6 +31,7 @@ relativeURLs = true
   facebook = 'https://www.facebook.com/theanchorinthestorm'
   tiktok = 'https://www.tiktok.com/@humble_nv'
   default_og_image = '/images/default-og.svg'
+  brave = 'https://theanchorinthestorm.brave'
   substack_embed = '<iframe src="https://humblenv.substack.com/embed" width="480" height="320" style="border:1px solid #EEE; background:white;" frameborder="0" scrolling="no"></iframe>'
   # Homepage banner image (can be an absolute URL or a path under /static)
   banner_image = '/images/banner.webp'

@@ -1,54 +1,26 @@
-# The Anchor — Hugo Site
+# Hugo Site - The Anchor Website
 
-This is the Hugo-powered website for The Anchor (gettheanchor.org). Write devotionals in Markdown and deploy automatically to Netlify.
+This directory contains the source code and content for The Anchor's official Hugo static website.
 
-## Local Development
+## Purpose
 
-```powershell
-# From the hugo-site directory
-hugo server -D --disableFastRender
-# Visit http://localhost:1313
-```
+This is the active development and deployment environment for the website. All changes made here directly impact the live website.
 
-## Build
+## Key Subdirectories
 
-```powershell
-hugo
-# Output in /public
-```
+*   **`content/`:** All markdown content for the website pages and posts.
+*   **`static/`:** Static assets like images, CSS, and JavaScript that are not processed by Hugo.
+*   **`layouts/`:** HTML templates that define the structure and appearance of the website.
+*   **`config.toml` / `hugo.toml`:** Main configuration files for the Hugo site.
 
-## Netlify Deployment
+## Getting Started
 
-- Build command: `hugo`
-- Publish directory: `public`
-- Environment variable (recommended):
-  - `HUGO_VERSION = 0.152.2`
+1.  **Install Hugo:** Follow the official Hugo documentation for installation.
+2.  **Run Development Server:** `hugo server`
+3.  **Build for Production:** `hugo`
 
-## Content Structure
+## Deployment
 
-- `content/devotionals/*.md` — each devotional with front matter, e.g.
+This site is deployed via Netlify. Configuration is in `netlify.toml`.
 
-```yaml
 ---
-title: "When the Fight Feels Hard: Running with Endurance"
-date: 2025-11-01
-type: "friday" # or "monday"
-scripture: "Hebrews 12:1–3"
-readingTime: "12 min read"
-featured: true
-image: "/images/devotionals/fight-feels-hard-hero.jpg"
-excerpt: "Short summary used on cards and SEO."
----
-```
-
-## Theming
-
-- `layouts/` — templates (home, list, single)
-- `static/css/` — CSS files
-- `static/js/` — JavaScript
-- `static/images/` — assets served at `/images/...`
-
-## Domain
-
-- Base URL is set to `https://gettheanchor.org/` in `hugo.toml`.
-- Configure DNS in Cloudflare to point `gettheanchor.org` and/or `www.gettheanchor.org` to Netlify after connecting the repo.

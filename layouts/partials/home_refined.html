@@ -186,9 +186,9 @@
           <div class="support-icon">🔒</div>
           <h3>Web3 Native</h3>
           <p>Accessible via .brave domain on Unstoppable Domains. The future of the decentralized web.</p>
-          {{ with .Site.Params.brave }}
-            <p class="small">Also available at <a href="{{ . }}" target="_blank" rel="noopener">{{ . | plainify }}</a> — open in Brave or via a compatible gateway.</p>
-          {{ end }}
+          <!-- Explicit Brave link (always visible on main site) -->
+          <p class="small">View the web3 deployment: <a href="https://theanchorinthestorm.brave" target="_blank" rel="noopener">theanchorinthestorm.brave</a> — open with Brave or via a compatible gateway.</p>
+          <p class="small" style="color:#d9534f;font-weight:bold;">Disclaimer: For the full web3-compliant site, visit <a href="https://theanchorinthestorm.brave" target="_blank" rel="noopener">theanchorinthestorm.brave</a> in the Brave browser.</p>
         </div>
       </div>
     </div>
