@@ -186,6 +186,9 @@
           <div class="support-icon">🔒</div>
           <h3>Web3 Native</h3>
           <p>Accessible via .brave domain on Unstoppable Domains. The future of the decentralized web.</p>
+          {{ with .Site.Params.brave }}
+            <p class="small">Also available at <a href="{{ . }}" target="_blank" rel="noopener">{{ . | plainify }}</a> — open in Brave or via a compatible gateway.</p>
+          {{ end }}
         </div>
       </div>
     </div>

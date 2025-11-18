@@ -37,7 +37,12 @@
     </div>
     <div class="footer-bottom">
       <div>&copy; {{ now.Format "2006" }} The Anchor. All rights reserved.</div>
-      <div>Hosted on IPFS · Built with Hugo · Decentralized Web3 Ministry</div>
+      <div>
+        Hosted on IPFS · Built with Hugo · Decentralized Web3 Ministry
+        {{ with .Site.Params.brave }}
+          · <a href="{{ . }}" target="_blank" rel="noopener" class="footer-brave">Open on Brave: {{ . | plainify }}</a>
+        {{ end }}
+      </div>
     </div>
   </div>
   <script src="{{ "js/script.js" | relURL }}" defer></script>
