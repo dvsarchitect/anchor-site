@@ -1,6 +1,6 @@
 ---
 title: "The Parable of the Sower: Why Some People Hear and Don't Change"
-date: 2025-11-22
+date: 2025-11-21
 type: "friday"
 scripture: "Matthew 13:1-23"
 readingTime: "15 min read"
