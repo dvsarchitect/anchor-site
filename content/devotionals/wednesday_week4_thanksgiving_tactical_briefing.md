@@ -1,6 +1,6 @@
 ---
 title: "A Thanksgiving Tactical Briefing: How to Give Thanks for Your Battles"
-date: 2025-11-26
+date: 2025-11-25
 type: "wednesday"
 scripture: "1 Thessalonians 5:18"
 readingTime: "8 min read"
