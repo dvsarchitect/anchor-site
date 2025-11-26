@@ -1,10 +1,10 @@
 ---
 title: "A Thanksgiving Tactical Briefing: How to Give Thanks for Your Battles"
-date: 2025-11-25
+date: 2025-11-26
 type: "wednesday"
 scripture: "1 Thessalonians 5:18"
 readingTime: "8 min read"
-featured: false
+featured: true
 image: "/images/devotionals/2025-11-25_wednesday-warrior.webp"
 excerpt: "This Thanksgiving, don't just give thanks for the good stuff. A warrior's gratitude is forged in the fire. Here's a 3-step tactical briefing for giving thanks IN your battles."
 ---
