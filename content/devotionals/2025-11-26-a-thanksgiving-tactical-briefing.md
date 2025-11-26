@@ -5,7 +5,7 @@ type: "wednesday"
 scripture: "1 Thessalonians 5:18"
 readingTime: "8 min read"
 featured: false
-image: "/images/devotionals/wednesday-week-4-thanksgiving.webp" # Placeholder image
+image: "/images/devotionals/2025-11-25_wednesday-warrior.webp"
 excerpt: "This Thanksgiving, don't just give thanks for the good stuff. A warrior's gratitude is forged in the fire. Here's a 3-step tactical briefing for giving thanks IN your battles."
 ---
 
