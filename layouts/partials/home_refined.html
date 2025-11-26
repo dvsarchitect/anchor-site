@@ -12,7 +12,7 @@
           <h1>{{ $post.Title }}</h1>
           {{ with $post.Params.excerpt }}<p class="lead">{{ . }}</p>{{ end }}
           <div class="featured-meta">
-            <span class="badge">{{ if eq $post.Params.type "friday" }}Friday Depth{{ else }}Monday Momentum{{ end }}</span>
+            <span class="badge">{{ if eq $post.Params.type "friday" }}Friday Depth{{ else if eq $post.Params.type "wednesday" }}Wednesday Warrior{{ else }}Momentum{{ end }}</span>
             <span>{{ $post.Date.Format "Jan 2, 2006" }}</span>
             <span>{{ $post.ReadingTime }} min read</span>
           </div>
@@ -45,7 +45,7 @@
   <div class="container">
     <div class="section-head">
       <h2>Recent Devotionals</h2>
-      <div class="hint">Two per week—Monday momentum & Friday depth</div>
+      <div class="hint">Weekly devotionals—Momentum to start your week, Depth for deeper dives, and Warrior briefs for focused challenge.</div>
     </div>
     <div class="grid">
       {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}

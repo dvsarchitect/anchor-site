@@ -3,7 +3,7 @@
   <div class="container">
     <div class="section-head">
       <h2>All Devotionals</h2>
-      <div class="hint">Two per week—Monday momentum & Friday depth</div>
+      <div class="hint">Weekly devotionals—Momentum to start your week, Depth for deeper dives, and Warrior briefs for focused challenge.</div>
     </div>
     <div class="grid">
       {{ range .Paginator.Pages }}
@@ -12,7 +12,7 @@
             {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="lazy">{{ end }}
           </div>
           <div class="card-body">
-            <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
+            <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday Depth{{ else if eq .Params.type "wednesday" }}Wednesday Warrior{{ else }}Momentum{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
             <h3>{{ .Title }}</h3>
             {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
             <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
