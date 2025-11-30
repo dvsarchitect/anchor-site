@@ -3,6 +3,7 @@ title: "The Man in the Mirror: Why Integrity is Built in the Dark"
 subtitle: "Friday Deep Dive – November 28/29, 2025"
 scripture: "Colossians 3:22-25"
 image: "/images/devotionals/friday-week-4-man-in-the-mirror.webp"
+date: 2025-11-28T16:00:00-08:00
 tags: [integrity, work, character, deep dive]
 ---
 
