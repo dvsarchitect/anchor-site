@@ -3,7 +3,7 @@ title: "The Man in the Mirror: Why Integrity is Built in the Dark"
 type: "friday"
 scripture: "Colossians 3:22-25"
 readingTime: "5 min read"
-featured: true
+featured: false
 image: "/images/devotionals/friday-week-4-man-in-the-mirror.webp"
 excerpt: "We live in a performance-based world where we are trained to work for the applause. But the real battle for your soul happens when the applause is gone."
 date: 2025-11-28T16:00:00-08:00

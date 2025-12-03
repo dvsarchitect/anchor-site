@@ -2,7 +2,8 @@
 title: Start the Week Anchored in Hope
 date: 2025-12-01
 tags: [devotional, advent, hope, monday-mission]
-hero_image: /images/monday_week4_anchored_in_hope.webp
+image: /images/monday_week4_anchored_in_hope.webp
+featured: true
 status: published
 layout: post
 ---
