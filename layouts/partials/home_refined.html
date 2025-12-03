@@ -3,32 +3,34 @@
 <!-- Hero: Featured Post -->
 {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
 {{ if gt (len $featured) 0 }}
-  {{ $post := index $featured 0 }}
-  <section class="hero-featured">
-    <div class="container">
-      <div class="featured-content reveal">
-        <div class="featured-text">
-          <div class="eyebrow">Featured This Week</div>
-          <h1>{{ $post.Title }}</h1>
-          {{ with $post.Params.excerpt }}<p class="lead">{{ . }}</p>{{ end }}
-          <div class="featured-meta">
-            <span class="badge">{{ if eq $post.Params.type "friday" }}Friday Depth{{ else if eq $post.Params.type "wednesday" }}Wednesday Warrior{{ else }}Momentum{{ end }}</span>
-            <span>{{ $post.Date.Format "Jan 2, 2006" }}</span>
-            <span>{{ $post.ReadingTime }} min read</span>
-          </div>
-          <div class="primary-actions">
-            <a class="btn btn-primary" href="{{ $post.RelPermalink }}">Read Now</a>
-            <a class="btn btn-outline" href="/devotionals/">Browse All</a>
-          </div>
+{{ $post := index $featured 0 }}
+<section class="hero-featured">
+  <div class="container">
+    <div class="featured-content reveal">
+      <div class="featured-text">
+        <div class="eyebrow">Featured This Week</div>
+        <h1>{{ $post.Title }}</h1>
+        {{ with $post.Params.excerpt }}<p class="lead">{{ . }}</p>{{ end }}
+        <div class="featured-meta">
+          <span class="badge">{{ if eq $post.Params.type "friday" }}Friday Depth{{ else if eq $post.Params.type
+            "wednesday" }}Wednesday Warrior{{ else }}Momentum{{ end }}</span>
+          <span>{{ $post.Date.Format "Jan 2, 2006" }}</span>
+          <span>{{ $post.ReadingTime }} min read</span>
         </div>
-        <div class="featured-image">
-          {{ with $post.Params.image }}
-            <img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="eager">
-          {{ end }}
+        <div class="primary-actions">
+          <a class="btn btn-primary" href="{{ $post.RelPermalink }}">Read Now</a>
+          <a class="btn btn-outline" href="/devotionals/">Browse All</a>
         </div>
       </div>
+      <div class="featured-image">
+        {{ with $post.Params.image }}
+        <img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}"
+          loading="eager">
+        {{ end }}
+      </div>
     </div>
-  </section>
+  </div>
+</section>
 {{ end }}
 
 <!-- Start Here CTA -->
@@ -45,32 +47,35 @@
   <div class="container">
     <div class="section-head">
       <h2>Recent Devotionals</h2>
-      <div class="hint">Weekly devotionals—Momentum to start your week, Depth for deeper dives, and Warrior briefs for focused challenge.</div>
+      <div class="hint">Weekly devotionals—Momentum to start your week, Depth for deeper dives, and Warrior briefs for
+        focused challenge.</div>
     </div>
     <div class="grid">
       {{ $featured := first 1 (where .Site.RegularPages "Params.featured" true) }}
       {{ $featuredPermalink := "" }}
       {{ if gt (len $featured) 0 }}
-        {{ $featuredPermalink = (index $featured 0).RelPermalink }}
+      {{ $featuredPermalink = (index $featured 0).RelPermalink }}
       {{ end }}
-      
+
       {{ $count := 0 }}
       {{ range .Site.RegularPages }}
-        {{ if and (eq .Section "devotionals") (ne .RelPermalink $featuredPermalink) (lt $count 6) }}
-          {{ $post := . }}
-          <article class="card reveal" data-type="{{ .Params.type }}">
-            <div class="card-thumb">
-              {{ with .Params.image }}<img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
-            </div>
-            <div class="card-body">
-              <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
-              <h3>{{ .Title }}</h3>
-              {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
-              <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
-            </div>
-          </article>
-          {{ $count = add $count 1 }}
-        {{ end }}
+      {{ if and (eq .Section "devotionals") (ne .RelPermalink $featuredPermalink) (lt $count 6) }}
+      {{ $post := . }}
+      <article class="card reveal" data-type="{{ .Params.type }}">
+        <div class="card-thumb">
+          {{ with .Params.image }}<img src="{{ . }}"
+            alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
+        </div>
+        <div class="card-body">
+          <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end
+              }}</span><time>{{ .Date.Format "Jan 2, 2006" }}</time></div>
+          <h3>{{ .Title }}</h3>
+          {{ with .Params.excerpt }}<p>{{ . }}</p>{{ end }}
+          <a class="more" href="{{ .RelPermalink }}">Read devotional</a>
+        </div>
+      </article>
+      {{ $count = add $count 1 }}
+      {{ end }}
       {{ end }}
     </div>
   </div>
@@ -84,35 +89,61 @@
         <div class="about-text">
           <h2>Why The Anchor?</h2>
           <p class="lead">Because men need something solid to hold onto.</p>
-          <p>In a culture that tells men to be quiet, ashamed, or perform, we're building something different. This is a place for rooted, honest discipleship. Scripture at the center. Courage at the edges.</p>
-          <p>Every Monday brings momentum to start your week strong. Every Friday offers depth to dig into God's Word. No noise. No outrage cycles. Just slow, anchored growth in Christ.</p>
-          <p>Whether you're fighting to keep going, learning to flee from sin, or pursuing righteousness—you're not alone in this. We're in it together, fixing our eyes on Jesus.</p>
-          
+          <p>In a culture that tells men to be quiet, ashamed, or perform, we're building something different. This is a
+            place for rooted, honest discipleship. Scripture at the center. Courage at the edges.</p>
+          <p>Every Monday brings momentum to start your week strong. Every Friday offers depth to dig into God's Word.
+            No noise. No outrage cycles. Just slow, anchored growth in Christ.</p>
+          <p>Whether you're fighting to keep going, learning to flee from sin, or pursuing righteousness—you're not
+            alone in this. We're in it together, fixing our eyes on Jesus.</p>
+
           <div class="about-cta">
             <h3>Connect with The Anchor</h3>
             <div class="social-links-about">
-              {{ with .Site.Params.substack }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link substack">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z"/></svg>
+              {{ with .Site.Params.substack }}<a href="{{ . }}" target="_blank" rel="noopener"
+                class="social-link substack">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M22.539 8.242H1.46V5.406h21.08v2.836zM1.46 10.812V24L12 18.11 22.54 24V10.812H1.46zM22.54 0H1.46v2.836h21.08V0z" />
+                </svg>
                 <span>Substack</span>
               </a>{{ end }}
-              {{ with .Site.Params.youtube }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link youtube">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+              {{ with .Site.Params.youtube }}<a href="{{ . }}" target="_blank" rel="noopener"
+                class="social-link youtube">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z" />
+                </svg>
                 <span>YouTube</span>
               </a>{{ end }}
-              {{ with .Site.Params.twitter }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link twitter">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+              {{ with .Site.Params.twitter }}<a href="{{ . }}" target="_blank" rel="noopener"
+                class="social-link twitter">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                </svg>
                 <span>X (Twitter)</span>
               </a>{{ end }}
-              {{ with .Site.Params.instagram }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link instagram">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+              {{ with .Site.Params.instagram }}<a href="{{ . }}" target="_blank" rel="noopener"
+                class="social-link instagram">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                </svg>
                 <span>Instagram</span>
               </a>{{ end }}
-              {{ with .Site.Params.facebook }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link facebook">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+              {{ with .Site.Params.facebook }}<a href="{{ . }}" target="_blank" rel="noopener"
+                class="social-link facebook">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z" />
+                </svg>
                 <span>Facebook</span>
               </a>{{ end }}
               {{ with .Site.Params.tiktok }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link tiktok">
-                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z"/></svg>
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-5.2 1.74 2.89 2.89 0 0 1 2.31-4.64 2.93 2.93 0 0 1 .88.13V9.4a6.84 6.84 0 0 0-1-.05A6.33 6.33 0 0 0 5 20.1a6.34 6.34 0 0 0 10.86-4.43v-7a8.16 8.16 0 0 0 4.77 1.52v-3.4a4.85 4.85 0 0 1-1-.1z" />
+                </svg>
                 <span>TikTok</span>
               </a>{{ end }}
             </div>
@@ -120,9 +151,9 @@
         </div>
         <div class="about-image">
           {{ with .Site.Params.logo_url }}
-            <div class="about-logo-display">
-              <img src="{{ . }}" alt="The Anchor logo">
-            </div>
+          <div class="about-logo-display">
+            <img src="{{ . }}" alt="The Anchor logo">
+          </div>
           {{ end }}
           <div class="about-stats">
             <div class="stat-item">
@@ -153,9 +184,10 @@
         <p class="section-subtitle">Content that's challenging, encouraging, or worth your time.</p>
       </div>
       <div class="youtube-embed">
-        <a href="https://www.youtube.com/watch?v=9UC5Ceq7CsM" target="_blank" rel="noopener" style="display:block;position:relative;">
-          <img src="https://img.youtube.com/vi/9UC5Ceq7CsM/maxresdefault.jpg" alt="Watch on YouTube" style="width:100%;border-radius:8px;">
-          <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);background:rgba(255,0,0,0.9);color:white;padding:15px 30px;border-radius:8px;font-weight:600;">▶ Watch on YouTube</div>
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/gyoOCCwRiOU?si=LJ0p2AZ_gDd3-i43"
+          title="YouTube video player" frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
         </a>
       </div>
     </div>
@@ -175,19 +207,22 @@
           <div class="support-icon">⚡</div>
           <h3>Tip with BAT</h3>
           <p>Support The Anchor using Basic Attention Token (BAT) directly in Brave browser.</p>
-          <a href="https://brave.com/brave-rewards/" target="_blank" rel="noopener" class="btn btn-primary">Learn About BAT Rewards</a>
+          <a href="https://brave.com/brave-rewards/" target="_blank" rel="noopener" class="btn btn-primary">Learn About
+            BAT Rewards</a>
         </div>
         <div class="support-card">
           <div class="support-icon">🌐</div>
           <h3>Decentralized & Free</h3>
-          <p>Hosted on IPFS. No ads, no tracking, no corporate control. Just Scripture-first content for men pursuing Christ.</p>
+          <p>Hosted on IPFS. No ads, no tracking, no corporate control. Just Scripture-first content for men pursuing
+            Christ.</p>
         </div>
         <div class="support-card">
           <div class="support-icon">🔒</div>
           <h3>Web3 Native</h3>
           <p>Accessible via .brave domain on Unstoppable Domains. The future of the decentralized web.</p>
           <!-- Explicit Brave link (always visible on main site) -->
-          <p class="small">View the web3 deployment: <a href="https://theanchorinthestorm.brave" target="_blank" rel="noopener">theanchorinthestorm.brave</a> — open with Brave or via a compatible gateway.</p>
+          <p class="small">View the web3 deployment: <a href="https://theanchorinthestorm.brave" target="_blank"
+              rel="noopener">theanchorinthestorm.brave</a> — open with Brave or via a compatible gateway.</p>
         </div>
       </div>
     </div>
@@ -204,7 +239,8 @@
           <p class="sub-text">No noise. Scripture-first. Unsubscribe anytime.</p>
         </div>
         <div class="subscribe-form-wrap">
-          <a href="https://humblenv.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary" style="display:inline-block;padding:1rem 2rem;font-size:1.1rem;">Subscribe on Substack</a>
+          <a href="https://humblenv.substack.com/subscribe" target="_blank" rel="noopener" class="btn btn-primary"
+            style="display:inline-block;padding:1rem 2rem;font-size:1.1rem;">Subscribe on Substack</a>
         </div>
       </div>
     </div>
@@ -212,14 +248,14 @@
 </section>
 
 <script>
-  (function(){
+  (function () {
     // Reveal animation on scroll
     const reveals = document.querySelectorAll('.reveal');
-    const io = new IntersectionObserver((entries)=>{
-      entries.forEach(entry=>{ if(entry.isIntersecting){ entry.target.classList.add('is-visible'); io.unobserve(entry.target);} });
+    const io = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); io.unobserve(entry.target); } });
     }, { threshold: 0.15 });
-    reveals.forEach(el=> io.observe(el));
-    
+    reveals.forEach(el => io.observe(el));
+
     // Handle lazy-loaded images
     const lazyImages = document.querySelectorAll('img[loading="lazy"]');
     lazyImages.forEach(img => {
