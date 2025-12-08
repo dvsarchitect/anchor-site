@@ -46,7 +46,7 @@ We're building a community of men committed to following Christ faithfully. Join
 
 - **[Subscribe on Substack](https://humblenv.substack.com/)** - Get Monday + Friday devotionals in your inbox
 - **[Follow on X (Twitter)](https://x.com/humble_nv)** - Daily encouragement and community interaction
-- **[Like on Facebook](https://www.facebook.com/theanchorinthestorm)** - Join the discussion and share with your network
+
 
 ### About the Author
 

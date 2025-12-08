@@ -12,9 +12,7 @@ relativeURLs = true
   substack = 'https://humblenv.substack.com/'
   youtube = 'https://www.youtube.com/@TheAnchorInTheStorm'
   twitter = 'https://x.com/humble_nv'
-  instagram = 'https://www.instagram.com/theanchorinthestorm'
-  facebook = 'https://www.facebook.com/theanchorinthestorm'
-  tiktok = 'https://www.tiktok.com/@humble_nv'
+
 
 [module]
   # You can pin Hugo version constraints here if needed in the future.
