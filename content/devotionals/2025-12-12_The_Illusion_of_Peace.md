@@ -142,3 +142,9 @@ It is a peace that says, "Put down your weapons. You don't have to fight for app
 *Help me to stand firm in the grace I have obtained. Silence the lies of my emotions with the truth of my justification. Let the reality of this reconciliation sink deep into my bones this Advent. I am not a rebel; I am a son. Help me to live with the dignity and peace that belongs to Your children.*
 
 *Amen.*
+
+---
+
+Stay anchored.
+
+humble
