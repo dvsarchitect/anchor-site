@@ -1,7 +1,7 @@
 ---
 date: 2025-12-15
-excerpt: '**"Rejoice in the Lord always. I will say it again: Rejoice!" — Philippians
-  4:4**'
+excerpt: '"Rejoice in the Lord always. I will say it again: Rejoice!" — Philippians
+  4:4'
 featured: true
 image: /images/2025-12-15_Joy_Is_A_Fortress.webp
 layout: post
