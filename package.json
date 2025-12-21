@@ -3,7 +3,7 @@
     "version": "1.0.0",
     "description": "The Anchor - Christian devotional website",
     "scripts": {
-        "build": "hugo --config config.toml --gc --minify && npx -y pagefind --site public"
+        "build": "hugo --config config.toml --gc --minify && npx -y pagefind --source public --bundle-dir pagefind"
     },
     "devDependencies": {
         "pagefind": "^1.0.0"
