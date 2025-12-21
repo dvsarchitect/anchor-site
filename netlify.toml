@@ -1,5 +1,5 @@
 [build]
-  command = "hugo --config config.toml --gc --minify"
+  command = "npm run build"
   publish = "public"
   ignore = "bash netlify-ignore.sh"
 

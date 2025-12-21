@@ -1,0 +1,11 @@
+{
+    "name": "the-anchor-hugo-site",
+    "version": "1.0.0",
+    "description": "The Anchor - Christian devotional website",
+    "scripts": {
+        "build": "hugo --config config.toml --gc --minify && npx -y pagefind --site public"
+    },
+    "devDependencies": {
+        "pagefind": "^1.0.0"
+    }
+}
