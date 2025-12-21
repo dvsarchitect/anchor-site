@@ -3,9 +3,13 @@ languageCode = 'en-us'
 title = 'The Anchor'
 
 enableRobotsTXT = true
-# Enable relative URLs so assets resolve correctly on Netlify preview domains *and* custom domain.
-# We will switch helpers in templates from absURL to relURL.
-relativeURLs = true
+canonifyURLs = false
+relativeURLs = false
+
+[sitemap]
+  changefreq = 'weekly'
+  priority = 0.5
+  filename = 'sitemap.xml'
 
 [pagination]
   pagerSize = 10

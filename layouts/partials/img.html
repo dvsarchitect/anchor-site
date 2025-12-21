@@ -1,0 +1,18 @@
+{{ $src := .src }}
+{{ $alt := .alt }}
+{{ $class := .class }}
+
+{{ $resource := resources.Get (printf "images/%s" (path.Base $src)) }}
+{{ if $resource }}
+{{ $small := $resource.Fill "400x250 webp" }}
+{{ $medium := $resource.Fill "800x500 webp" }}
+{{ $large := $resource.Fill "1200x750 webp" }}
+
+<picture>
+    <source srcset="{{ $small.RelPermalink }} 400w, {{ $medium.RelPermalink }} 800w, {{ $large.RelPermalink }} 1200w"
+        type="image/webp">
+    <img src="{{ $medium.RelPermalink }}" alt="{{ $alt }}" class="{{ $class }}" loading="lazy" decoding="async">
+</picture>
+{{ else }}
+<img src="{{ $src | relURL }}" alt="{{ $alt }}" class="{{ $class }}" loading="lazy">
+{{ end }}

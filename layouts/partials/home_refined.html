@@ -24,8 +24,7 @@
       </div>
       <div class="featured-image">
         {{ with $post.Params.image }}
-        <img src="{{ . }}" alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}"
-          loading="eager">
+        {{ partial "img.html" (dict "src" . "alt" (or $post.Params.image_alt $post.Title) "class" "img-fluid") }}
         {{ end }}
       </div>
     </div>
@@ -63,8 +62,9 @@
       {{ $post := . }}
       <article class="card reveal" data-type="{{ .Params.type }}">
         <div class="card-thumb">
-          {{ with .Params.image }}<img src="{{ . }}"
-            alt="{{ with $post.Params.image_alt }}{{ . }}{{ else }}{{ $post.Title }}{{ end }}" loading="lazy">{{ end }}
+          {{ with .Params.image }}
+          {{ partial "img.html" (dict "src" . "alt" (or $post.Params.image_alt $post.Title) "class" "img-thumb") }}
+          {{ end }}
         </div>
         <div class="card-body">
           <div class="card-meta"><span class="badge">{{ if eq .Params.type "friday" }}Friday{{ else }}Monday{{ end
@@ -175,6 +175,26 @@
   </div>
 </section>
 
+<!-- Library Grid: Browse by Topic -->
+<section class="library-grid-section" id="library">
+  <div class="container">
+    <div class="section-head-centered">
+      <h2>The Library</h2>
+      <p class="section-subtitle">Deep dives and encouragements, organized by theme.</p>
+    </div>
+    <div class="topic-grid">
+      {{- $topics := slice "Advent" "Peace" "Gospel" "Church Militant" "Tradition" "Philippians 4" -}}
+      {{- range $topics -}}
+      <a href="/tags/{{ . | urlize }}/" class="topic-card">
+        <div class="topic-icon">📖</div>
+        <h3>{{ . }}</h3>
+        <p>Explore all studies on {{ . }}.</p>
+      </a>
+      {{- end -}}
+    </div>
+  </div>
+</section>
+
 <!-- What I'm Watching Section -->
 <section class="watching-section" id="watching">
   <div class="container">
@@ -184,8 +204,8 @@
         <p class="section-subtitle">Content that's challenging, encouraging, or worth your time.</p>
       </div>
       <div class="youtube-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/emRLmtKVyF8"
-          title="YouTube video player" frameborder="0"
+        <iframe width="560" height="315" src="https://www.youtube.com/embed/emRLmtKVyF8" title="YouTube video player"
+          frameborder="0"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
           referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
       </div>
@@ -194,39 +214,34 @@
 </section>
 
 <!-- Support Section (Web3/BAT) -->
-<section class="support-section" id="support">
+<section class="plus-conversion-section reveal">
   <div class="container">
-    <div class="support-content reveal">
-      <div class="section-head-centered">
-        <h2>Support This Ministry</h2>
-        <p class="section-subtitle">This site is decentralized, Web3-native, and built for the Brave browser.</p>
+    <div class="plus-card">
+      <div class="plus-content">
+        <div class="eyebrow">Anchor Plus</div>
+        <h2>Go Beneath the Surface</h2>
+        <p>Support this ministry and unlock the full tactical field manual. Join a community of men pursuing
+          Scripture-first discipleship.</p>
+        <ul class="plus-features">
+          <li><strong>PDF Study Guides:</strong> Professional, printable guides for every Friday Deep Dive.</li>
+          <li><strong>Greek Word Studies:</strong> Go deeper into the architecture of the original text.</li>
+          <li><strong>Private Community:</strong> Monthly AMAs and direct engagement in the comments.</li>
+        </ul>
+        <div class="plus-actions">
+          <a href="https://humblenv.substack.com/subscribe" class="btn btn-primary btn-lg">Join Anchor Plus</a>
+          <span class="price-hint">Daily coffee price for weekly spiritual depth.</span>
+        </div>
       </div>
-      <div class="support-options">
-        <div class="support-card">
-          <div class="support-icon">⚡</div>
-          <h3>Tip with BAT</h3>
-          <p>Support The Anchor using Basic Attention Token (BAT) directly in Brave browser.</p>
-          <a href="https://brave.com/brave-rewards/" target="_blank" rel="noopener" class="btn btn-primary">Learn About
-            BAT Rewards</a>
-        </div>
-        <div class="support-card">
-          <div class="support-icon">🌐</div>
-          <h3>Decentralized & Free</h3>
-          <p>Hosted on IPFS. No ads, no tracking, no corporate control. Just Scripture-first content for men pursuing
-            Christ.</p>
-        </div>
-        <div class="support-card">
-          <div class="support-icon">🔒</div>
-          <h3>Web3 Native</h3>
-          <p>Accessible via .brave domain on Unstoppable Domains. The future of the decentralized web.</p>
-          <!-- Explicit Brave link (always visible on main site) -->
-          <p class="small">View the web3 deployment: <a href="https://theanchorinthestorm.brave" target="_blank"
-              rel="noopener">theanchorinthestorm.brave</a> — open with Brave or via a compatible gateway.</p>
+      <div class="plus-visual">
+        <div class="mockup-kit">
+          <span class="icon-kit">🛡️</span>
+          <div class="kit-label">The Warrior Kit</div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 
 <!-- Subscribe Section -->
 <section class="subscribe-section" id="subscribe">

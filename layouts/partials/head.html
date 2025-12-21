@@ -1,85 +1,55 @@
 <!doctype html>
 <html lang="en">
+
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>{{ if and .Title (ne .Title .Site.Title) }}{{ .Title }} · {{ end }}{{ .Site.Title }}</title>
-  
-  {{- /* Dynamic Meta Description */ -}}
   {{- $description := or .Description (or .Params.excerpt .Site.Params.description) -}}
   <meta name="description" content="{{ $description }}" />
   <link rel="canonical" href="{{ .Permalink }}" />
   <meta name="theme-color" content="#ffffff" />
-  
-  {{- /* Favicons */ -}}
+  {{ with .Params.tags }}
+  <meta name="keywords" content="{{ delimit . " , " }}" />
+  {{ end }}
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  
-  {{- /* Structured Data (JSON-LD) */ -}}
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "{{ if .IsPage }}Article{{ else }}Organization{{ end }}",
-    "mainEntityOfPage": {
-      "@type": "WebPage",
-      "@id": "{{ .Permalink }}"
-    },
-    "headline": "{{ or .Title .Site.Title }}",
-    "description": "{{ $description }}",
-    {{ if .IsPage -}}
-    "datePublished": "{{ .Date.Format "2006-01-02T15:04:05Z07:00" }}",
-    "dateModified": "{{ .Lastmod.Format "2006-01-02T15:04:05Z07:00" }}",
-    {{- end }}
-    "author": {
-      "@type": "Person",
-      "name": "humble"
-    },
-    "publisher": {
-      "@type": "Organization",
-      "name": "The Anchor",
-      "logo": {
-        "@type": "ImageObject",
-        "url": "{{ .Site.BaseURL }}images/the-anchor-logo.webp"
-      }
-    }
-  }
+  {{- $refined_css := "css/refined-neutral.css" -}}
+  {{- $styles_css := "css/styles.css" -}}
+  {{- $devotional_css := "css/devotional.css" -}}
+  {{- $featured_css := "css/featured-images.css" -}}
+  {{- $cta_css := "css/custom-cta.css" -}}
+  {{ if eq .Site.Params.homepage_variant "refined" }}
+  <link rel="stylesheet" href="{{ $refined_css | relURL }}" />
+  {{ else }}
+  <link rel="stylesheet" href="{{ $styles_css | relURL }}" />
+  <link rel="stylesheet" href="{{ $devotional_css | relURL }}" />
+  <link rel="stylesheet" href="{{ $featured_css | relURL }}" />
+  {{ end }}
+  <link rel="stylesheet" href="{{ $cta_css | relURL }}" />
+  <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
+  <script src="/pagefind/pagefind-ui.js"></script>
+  <script>
+    (function () {
+      const theme = localStorage.getItem('theme') ||
+        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.setAttribute('data-theme', theme);
+    })();
   </script>
-
-  <!-- Early theme application to avoid flash of incorrect mode -->
-  <script>(function(){
-    try {
-      // Default to light for brand consistency; only use saved choice if present.
-      var saved = localStorage.getItem('theme');
-      var mode = saved || 'light';
-      document.documentElement.setAttribute('data-theme', mode);
-    } catch(e){}
-  })();</script>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  {{ if eq .Site.Params.homepage_variant "refined" }}
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  {{ else }}
-    <link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:wght@400;600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
-  {{ end }}
-  {{ if eq .Site.Params.homepage_variant "refined" }}
-    <link rel="stylesheet" href="{{ "css/refined-neutral.css" | relURL }}" />
-  {{ else }}
-    <link rel="stylesheet" href="{{ "css/styles.css" | relURL }}" />
-    <link rel="stylesheet" href="{{ "css/devotional.css" | relURL }}" />
-    <link rel="stylesheet" href="{{ "css/featured-images.css" | relURL }}" />
-  {{ end }}
-  <link rel="stylesheet" href="{{ "css/custom-cta.css" | relURL }}" />
-  {{- /* Open Graph basics */ -}}
-  {{- $ogTitle := cond (ne .Title "") (printf "%s · %s" .Title .Site.Title) .Site.Title -}}
-  {{- $ogImage := or .Params.og_image (or .Params.image .Site.Params.default_og_image) -}}
-  <meta property="og:title" content="{{ $ogTitle }}"/>
-  <meta property="og:type" content="article"/>
-  <meta property="og:url" content="{{ .Permalink }}"/>
-  {{ with $ogImage }}<meta property="og:image" content="{{ . }}"/>{{ end }}
-  <meta name="twitter:card" content="summary_large_image"/>
-  
-  {{- /* Google Analytics */ -}}
+  <script>
+    window.addEventListener('DOMContentLoaded', (event) => {
+      new PagefindUI({
+        element: "#search",
+        showSubResults: true,
+        showImages: true,
+        translations: {
+          placeholder: "Search devotionals..."
+        }
+      });
+    });
+  </script>
 </head>
+
 <body>

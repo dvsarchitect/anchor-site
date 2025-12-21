@@ -17,11 +17,11 @@
           <a href="/devotionals/">All Posts</a>
           {{ $fridayPost := first 1 (where .Site.RegularPages "Params.type" "friday") }}
           {{ if gt (len $fridayPost) 0 }}
-            <a href="{{ (index $fridayPost 0).RelPermalink }}">Latest Friday</a>
+          <a href="{{ (index $fridayPost 0).RelPermalink }}">Latest Friday</a>
           {{ end }}
           {{ $mondayPost := first 1 (where .Site.RegularPages "Params.type" "monday") }}
           {{ if gt (len $mondayPost) 0 }}
-            <a href="{{ (index $mondayPost 0).RelPermalink }}">Latest Monday</a>
+          <a href="{{ (index $mondayPost 0).RelPermalink }}">Latest Monday</a>
           {{ end }}
         </div>
         <div class="footer-column">
@@ -38,12 +38,13 @@
     <div class="footer-bottom">
       <div>&copy; {{ now.Format "2006" }} The Anchor. All rights reserved.</div>
       <div>
-        Hosted on IPFS · Built with Hugo · Decentralized Web3 Ministry
-        · <a href="https://theanchorinthestorm.brave" target="_blank" rel="noopener" class="footer-brave">View on Brave: theanchorinthestorm.brave</a>
+        Built with Hugo · Finding our way to Jesus, one verse at a time.
       </div>
     </div>
   </div>
-  <script src="{{ "js/script.js" | relURL }}" defer></script>
+  {{- $script_js := "js/script.js" -}}
+  <script src="{{ $script_js | relURL }}" defer></script>
 </footer>
 </body>
+
 </html>

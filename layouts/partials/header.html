@@ -2,22 +2,26 @@
   <div class="container nav-content">
     <a class="logo" href="/">
       {{ with .Site.Params.logo_url }}
-        <img src="{{ . }}" alt="The Anchor logo" width="40" height="40">
+      <img src="{{ . | relURL }}" alt="The Anchor logo">
       {{ end }}
       <span>{{ .Site.Title }}</span>
     </a>
     <nav class="nav-links">
-      <a href="/" class="nav-home">Home</a>
-      <a href="/devotionals/" class="nav-devotionals">Devotionals</a>
-      <a href="/about/" class="nav-about">About</a>
-      <a href="/#subscribe" class="nav-subscribe">Subscribe</a>
-      <a href="/index.xml" aria-label="RSS feed" title="RSS feed" class="nav-rss">RSS</a>
+      <a href="/devotionals/">Devotionals</a>
+      <a href="/sword-table/">Sword Table</a>
+      <a href="/about/">About</a>
+      <a href="/start-here/">Start Here</a>
+      <span class="nav-separator">|</span>
+      <div id="search" class="search-wrap"></div>
     </nav>
-    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
-      <span class="theme-icon">🌙</span>
+    <button id="theme-toggle" class="theme-toggle" aria-label="Toggle dark mode">
+      <span class="icon-sun">☀️</span>
+      <span class="icon-moon">🌙</span>
     </button>
-    <button class="mobile-menu-toggle" aria-label="Toggle menu">
-      <span></span><span></span><span></span>
+    <button class="mobile-menu-toggle" id="mobile-menu-toggle" aria-label="Menu">
+      <span></span>
+      <span></span>
+      <span></span>
     </button>
   </div>
 </header>

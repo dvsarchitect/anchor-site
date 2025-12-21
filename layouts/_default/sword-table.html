@@ -1,0 +1,35 @@
+{{ define "main" }}
+<section class="devotionals-refined">
+    <div class="container">
+        <div class="section-head-centered">
+            <h1>{{ .Title }}</h1>
+            <p class="lead">{{ .Params.subtitle }}</p>
+        </div>
+
+        <div class="sword-table-wrap">
+            <table class="sword-table">
+                <thead>
+                    <tr>
+                        <th>Scripture Reference</th>
+                        <th>Devotional Title</th>
+                        <th>Type</th>
+                        <th>Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {{ range (where .Site.RegularPages "Section" "devotionals").ByDate.Reverse }}
+                    <tr>
+                        <td class="ref-cell">{{ .Params.scripture }}</td>
+                        <td class="title-cell"><a href="{{ .RelPermalink }}">{{ .Title }}</a></td>
+                        <td><span class="badge">{{ $dayOfWeek := .Date.Weekday }}{{ if eq $dayOfWeek 1 }}Monday
+                                Momentum{{ else if eq $dayOfWeek 5 }}Friday Deep Dive{{ else }}{{ .Date.Format "Monday"
+                                }}{{ end }}</span></td>
+                        <td>{{ .Date.Format "Jan 2, 2006" }}</td>
+                    </tr>
+                    {{ end }}
+                </tbody>
+            </table>
+        </div>
+    </div>
+</section>
+{{ end }}
