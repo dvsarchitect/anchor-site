@@ -3,7 +3,8 @@ title: "After the Manger: Living a Life of Love"
 date: 2025-12-26
 scripture: "1 John 4:7-11"
 readingTime: "5 min read"
-featured: true
+draft: true
+featured: false
 type: "friday"
 image: "/images/devotionals/after-the-manger.webp"
 excerpt: "The wrapping paper is in the trash. The guests are gone. Now comes the tactical part: living out the love of the Incarnation."
