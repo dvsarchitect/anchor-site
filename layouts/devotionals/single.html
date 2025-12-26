@@ -17,16 +17,31 @@
   <div class="container-narrow">
     {{ with .Params.image }}
     <div class="article-hero-image ratio-21-9">
-      <img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="eager" width="1200" height="514">
+      <img src="{{ . }}" alt="{{ with $.Params.image_alt }}{{ . }}{{ else }}{{ $.Title }}{{ end }}" loading="eager"
+        width="1200" height="514">
     </div>
     {{ end }}
     <div class="article-body">
       {{ .Content }}
+
+      {{ with .Params.substack_deep_dive_url }}
+      <div class="substack-cta reveal">
+        <div class="cta-inner">
+          <div class="cta-badge">Member Deep Dive</div>
+          <h3>Go beneath the surface.</h3>
+          <p>Get the Greek word studies, Church Father insights, and tactical application for this devotional on
+            Substack.</p>
+          <a href="{{ . }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Continue Reading on
+            Substack</a>
+        </div>
+      </div>
+      {{ end }}
     </div>
     <footer class="article-footer">
       <div class="author-card">
         <div class="author-name">humble</div>
-        <p class="author-bio">An honest Christian seeker writing to men who feel lost. Verse by verse. No posturing. Just the Word, applied.</p>
+        <p class="author-bio">An honest Christian seeker writing to men who feel lost. Verse by verse. No posturing.
+          Just the Word, applied.</p>
       </div>
       <div class="share-section">
         <h4>Share this devotional</h4>
