@@ -12,6 +12,33 @@
   {{ with .Params.tags }}
   <meta name="keywords" content="{{ delimit . " , " }}" />
   {{ end }}
+
+  {{/* SEO / Social Meta Tags */}}
+  {{- $og_image := or .Params.image (or .Site.Params.banner_image .Site.Params.logo_url) | absURL -}}
+
+  {{/* Open Graph / Facebook */}}
+  <meta property="og:site_name" content="{{ .Site.Title }}" />
+  <meta property="og:type" content="{{ if .IsPage }}article{{ else }}website{{ end }}" />
+  <meta property="og:url" content="{{ .Permalink }}" />
+  <meta property="og:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}" />
+  <meta property="og:description" content="{{ $description }}" />
+  <meta property="og:image" content="{{ $og_image }}" />
+  <meta property="og:image:alt" content="{{ or .Params.banner_alt .Site.Params.banner_alt }}" />
+
+  {{/* Twitter */}}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:site" content="@{{ .Site.Params.twitter_handle }}" />
+  <meta name="twitter:creator" content="@{{ .Site.Params.twitter_handle }}" />
+  <meta name="twitter:title" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}" />
+  <meta name="twitter:description" content="{{ $description }}" />
+  <meta name="twitter:image" content="{{ $og_image }}" />
+
+  {{/* Platform Specifics */}}
+  <meta itemprop="name" content="{{ if .Title }}{{ .Title }}{{ else }}{{ .Site.Title }}{{ end }}">
+  <meta itemprop="description" content="{{ $description }}">
+  <meta itemprop="image" content="{{ $og_image }}">
+
+  {{ partial "seo_schema.html" . }}
   <link rel="icon" type="image/x-icon" href="/favicon.ico" />
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
