@@ -13,6 +13,45 @@
   <meta name="keywords" content="{{ delimit . " , " }}" />
   {{ end }}
 
+  {{/* Performance: Resource Hints */}}
+  <link rel="preconnect" href="https://www.youtube.com">
+  <link rel="dns-prefetch" href="https://www.youtube.com">
+  <link rel="preconnect" href="https://open.spotify.com">
+  <link rel="dns-prefetch" href="https://open.spotify.com">
+  <link rel="dns-prefetch" href="https://fonts.googleapis.com">
+
+  {{/* Performance: Critical CSS */}}
+  <style>
+    :root {
+      --gray-50: #f9f9f9;
+      --gray-100: #f2f2f2;
+      --gray-200: #e5e5e5;
+      --gray-900: #1a1a1a;
+      --navy: #0a192f;
+      --surface: #ffffff;
+      --text-main: #333333;
+    }
+
+    [data-theme='dark'] {
+      --surface: #121212;
+      --text-main: #e0e0e0;
+    }
+
+    body {
+      background-color: var(--surface);
+      color: var(--text-main);
+      margin: 0;
+      font-family: sans-serif;
+    }
+
+    .eyebrow {
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      font-weight: 700;
+      font-size: 0.8rem;
+    }
+  </style>
+
   {{/* SEO / Social Meta Tags */}}
   {{- $og_image := or .Params.image (or .Site.Params.banner_image .Site.Params.logo_url) | absURL -}}
 
@@ -43,19 +82,20 @@
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
   <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
   <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
-  {{- $refined_css := "css/refined-neutral.css" -}}
-  {{- $styles_css := "css/styles.css" -}}
-  {{- $devotional_css := "css/devotional.css" -}}
-  {{- $featured_css := "css/featured-images.css" -}}
-  {{- $cta_css := "css/custom-cta.css" -}}
-  {{ if eq .Site.Params.homepage_variant "refined" }}
-  <link rel="stylesheet" href="{{ $refined_css | relURL }}" />
-  {{ else }}
-  <link rel="stylesheet" href="{{ $styles_css | relURL }}" />
-  <link rel="stylesheet" href="{{ $devotional_css | relURL }}" />
-  <link rel="stylesheet" href="{{ $featured_css | relURL }}" />
-  {{ end }}
-  <link rel="stylesheet" href="{{ $cta_css | relURL }}" />
+  {{/* Performance: Unified CSS Bundle (Hugo Pipes) */}}
+  {{- $css_bundle := slice -}}
+  {{- if eq .Site.Params.homepage_variant "refined" -}}
+  {{- $css_bundle = $css_bundle | append (resources.Get "css/refined-neutral.css") -}}
+  {{- else -}}
+  {{- $css_bundle = $css_bundle | append (resources.Get "css/styles.css") -}}
+  {{- $css_bundle = $css_bundle | append (resources.Get "css/devotional.css") -}}
+  {{- $css_bundle = $css_bundle | append (resources.Get "css/featured-images.css") -}}
+  {{- end -}}
+  {{- $css_bundle = $css_bundle | append (resources.Get "css/custom-cta.css") -}}
+
+  {{- $bundle := $css_bundle | resources.Concat "css/main.bundle.css" | resources.Minify | resources.Fingerprint -}}
+  <link rel="stylesheet" href="{{ $bundle.RelPermalink }}" integrity="{{ $bundle.Data.Integrity }}"
+    crossorigin="anonymous" />
   <link href="/pagefind/pagefind-ui.css" rel="stylesheet">
   <script src="/pagefind/pagefind-ui.js"></script>
   <script>

@@ -1,0 +1,212 @@
+/* ========== SEARCH / PAGEFIND ========== */
+.search-wrap {
+    min-width: 250px !important;
+    margin-left: 1rem !important;
+}
+
+#search .pagefind-ui__search-input {
+    background: var(--color-bg) !important;
+    color: var(--color-text) !important;
+    border-color: var(--color-border) !important;
+    font-size: 0.9rem !important;
+    padding: 0.5rem 2.5rem 0.5rem 1rem !important;
+    border-radius: 8px !important;
+}
+
+#search .pagefind-ui__drawer {
+    background: var(--color-bg) !important;
+    border: 1px solid var(--color-border) !important;
+    box-shadow: var(--shadow-lg) !important;
+    border-radius: 12px !important;
+    margin-top: 10px !important;
+    padding: 1rem !important;
+}
+
+.nav-separator {
+    color: var(--color-border) !important;
+    margin: 0 0.5rem !important;
+}
+
+/* ========== LIBRARY / TOPIC GRID ========== */
+.library-grid-section {
+    padding: 5rem 0;
+    background: var(--color-bg-alt);
+}
+
+.topic-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+}
+
+.topic-card {
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+    padding: 2rem;
+    text-align: center;
+    text-decoration: none;
+    transition: all 0.3s var(--ease);
+}
+
+.topic-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-md);
+    border-color: var(--color-accent);
+}
+
+.topic-icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+}
+
+.topic-card h3 {
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+    color: var(--color-primary);
+}
+
+.topic-card p {
+    font-size: 0.95rem;
+    color: var(--color-text-light);
+    margin: 0;
+}
+
+/* ========== ANCHOR PLUS CONVERSION ========== */
+.plus-conversion-section {
+    padding: 6rem 0;
+    background: var(--color-bg);
+}
+
+.plus-card {
+    background: var(--accent-navy);
+    color: #fff;
+    border-radius: 20px;
+    padding: 4rem;
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 4rem;
+    align-items: center;
+    box-shadow: var(--shadow-lg);
+}
+
+.plus-content .eyebrow {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 700;
+    margin-bottom: 1rem;
+}
+
+.plus-content h2 {
+    color: #fff !important;
+    font-size: 2.5rem;
+    margin-bottom: 1.5rem;
+}
+
+.plus-content p {
+    color: rgba(255, 255, 255, 0.9) !important;
+    font-size: 1.15rem;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.plus-features {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 2.5rem;
+}
+
+.plus-features li {
+    margin-bottom: 1rem;
+    padding-left: 2rem;
+    position: relative;
+    font-size: 1.05rem;
+    color: rgba(255, 255, 255, 0.9);
+}
+
+.plus-features li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--color-monday);
+    font-weight: 800;
+}
+
+.plus-actions {
+    display: flex;
+    align-items: center;
+    gap: 2rem;
+}
+
+.plus-visual {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.mockup-kit {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 3rem;
+    border-radius: 50%;
+    border: 2px dashed rgba(255, 255, 255, 0.2);
+    text-align: center;
+}
+
+.icon-kit {
+    font-size: 4rem;
+    display: block;
+    margin-bottom: 1rem;
+}
+
+.kit-label {
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-size: 0.8rem;
+}
+
+/* ========== SWORD TABLE (SCRIPTURE INDEX) ========== */
+.sword-table-wrap {
+    margin-top: 3rem;
+    overflow-x: auto;
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: 12px;
+}
+
+.sword-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.sword-table th,
+.sword-table td {
+    padding: 1.25rem 1.5rem;
+    text-align: left;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.sword-table th {
+    background: var(--color-bg-alt);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.05em;
+    color: var(--color-secondary);
+}
+
+.ref-cell {
+    font-weight: 700;
+    color: var(--color-accent);
+    white-space: nowrap;
+}
+
+.title-cell a {
+    font-weight: 600;
+    color: var(--color-primary);
+    text-decoration: none;
+}
+
+.title-cell a:hover {
+    text-decoration: underline;
+}

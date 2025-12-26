@@ -24,7 +24,8 @@
       </div>
       <div class="featured-image">
         {{ with $post.Params.image }}
-        {{ partial "img.html" (dict "src" . "alt" (or $post.Params.image_alt $post.Title) "class" "img-fluid") }}
+        {{ partial "img.html" (dict "src" . "alt" (or $post.Params.image_alt $post.Title) "class" "img-fluid" "loading"
+        "eager") }}
         {{ end }}
       </div>
     </div>
