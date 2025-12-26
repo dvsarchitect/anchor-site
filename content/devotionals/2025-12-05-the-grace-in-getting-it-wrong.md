@@ -7,6 +7,7 @@ draft: false
 excerpt: We spend a lot of energy trying to get it right.
 featured: true
 image: /images/2025-12-05-the-grace-in-getting-it-wrong.webp
+scripture: "James 4:6"
 layout: post
 status: published
 tags:

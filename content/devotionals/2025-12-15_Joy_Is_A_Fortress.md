@@ -4,6 +4,7 @@ excerpt: '"Rejoice in the Lord always. I will say it again: Rejoice!" — Philip
   4:4'
 featured: true
 image: /images/2025-12-15_Joy_Is_A_Fortress.webp
+scripture: "Philippians 4:4"
 layout: post
 tags:
 - devotional

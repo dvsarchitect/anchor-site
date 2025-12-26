@@ -8,6 +8,7 @@ excerpt: I remember a specific Christmas from when I was a much younger man. We 
   and "what we had to give" was a canyon.
 featured: true
 image: /images/start-here-hero.webp
+scripture: "Luke 2:1-20"
 layout: post
 status: published
 tags:

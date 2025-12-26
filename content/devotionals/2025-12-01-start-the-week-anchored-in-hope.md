@@ -3,6 +3,7 @@ title: Start the Week Anchored in Hope
 date: 2025-12-01
 tags: [devotional, advent, hope, monday-mission]
 image: /images/monday_week4_anchored_in_hope.webp
+scripture: "Isaiah 9:2, 6-7"
 featured: true
 status: published
 layout: post
