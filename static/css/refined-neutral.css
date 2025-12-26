@@ -2044,3 +2044,52 @@ h6 {
 .title-cell a:hover {
   text-decoration: underline;
 }
+/* ========== SHORTS SECTION ========== */
+.shorts-section {
+  padding: 5rem 0;
+  background: var(--color-bg-alt);
+}
+
+.shorts-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2rem;
+  justify-items: center;
+}
+
+.short-card {
+  width: 100%;
+  max-width: 315px;
+  background: var(--color-bg);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: var(--shadow-lg);
+  transition: transform 0.3s var(--ease);
+}
+
+.short-card:hover {
+  transform: translateY(-5px);
+}
+
+.video-container {
+  position: relative;
+  padding-bottom: 177.77%; /* 9:16 Aspect Ratio */
+  height: 0;
+  overflow: hidden;
+}
+
+.video-container iframe {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border: 0;
+}
+
+@media (max-width: 768px) {
+  .shorts-section {
+    padding: 3rem 0;
+  }
+}
+

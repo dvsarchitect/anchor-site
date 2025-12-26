@@ -12,6 +12,17 @@
   <div class="container-narrow">
     <div class="article-body">
       {{ .Content }}
+      
+      {{ with .Params.substack_deep_dive_url }}
+      <div class="substack-cta reveal">
+        <div class="cta-inner">
+          <div class="cta-badge">Member Deep Dive</div>
+          <h3>Go beneath the surface.</h3>
+          <p>Get the Greek word studies, Church Father insights, and tactical application for this devotional on Substack.</p>
+          <a href="{{ . }}" class="btn btn-primary btn-lg" target="_blank" rel="noopener">Continue Reading on Substack</a>
+        </div>
+      </div>
+      {{ end }}
     </div>
   </div>
 </article>

@@ -139,6 +139,14 @@
                 </svg>
                 <span>Facebook</span>
               </a>{{ end }}
+              {{ with .Site.Params.spotify }}<a href="{{ . }}" target="_blank" rel="noopener"
+                class="social-link spotify">
+                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
+                  <path
+                    d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.121 17.1c-.24.361-.722.481-1.082.241-2.885-1.743-6.495-2.164-10.82-1.142-.421.06-.842-.18-.902-.601s.18-.842.601-.902c4.809-1.082 8.783-.601 12.029 1.382.361.241.481.661.274.922zm1.322-3.186c-.301.481-.902.661-1.383.361-3.307-2.044-8.327-2.645-12.213-1.443-.541.18-1.142-.12-1.323-.661s.12-1.143.661-1.323c4.45-1.322 10.038-.661 13.844 1.743.481.241.601.842.414 1.323zm.12-3.367c-3.97-2.345-10.511-2.585-14.358-1.382-.601.18-1.263-.12-1.443-.722s.12-1.263.722-1.442c4.45-1.383 11.652-1.142 16.223 1.563.541.3.722 1.022.421 1.563-.301.541-.962.723-1.565.42z" />
+                </svg>
+                <span>Spotify</span>
+              </a>{{ end }}
               {{ with .Site.Params.tiktok }}<a href="{{ . }}" target="_blank" rel="noopener" class="social-link tiktok">
                 <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="currentColor">
                   <path
@@ -195,23 +203,27 @@
   </div>
 </section>
 
-<!-- What I'm Watching Section -->
-<section class="watching-section" id="watching">
+<!-- Latest Shorts Section -->
+<section class="shorts-section" id="shorts">
   <div class="container">
-    <div class="watching-content reveal">
-      <div class="section-head-centered">
-        <h2>What I'm Watching</h2>
-        <p class="section-subtitle">Content that's challenging, encouraging, or worth your time.</p>
-      </div>
-      <div class="youtube-embed">
-        <iframe width="560" height="315" src="https://www.youtube.com/embed/emRLmtKVyF8" title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-          referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    <div class="section-head-centered">
+      <h2>The Front Lines (Shorts)</h2>
+      <p class="section-subtitle">Quick, tactical insights to keep you anchored.</p>
+    </div>
+    <div class="shorts-grid">
+      <div class="short-card reveal">
+        <div class="video-container">
+          <iframe width="315" height="560" src="https://www.youtube.com/embed/I7ctaGGyTE4" title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
+        </div>
       </div>
     </div>
   </div>
 </section>
+
+<!-- What I'm Watching Section -->
 
 <!-- Support Section (Web3/BAT) -->
 <section class="plus-conversion-section reveal">

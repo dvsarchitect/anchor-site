@@ -64,3 +64,47 @@
 .start-here-cta .btn-cta:hover {
     transform: scale(1.15);
 }
+
+/* Substack Deep Dive CTA */
+.substack-cta {
+  margin: 4rem 0;
+  padding: 3rem;
+  background: linear-gradient(135deg, var(--neutral-100), var(--neutral-50));
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  text-align: center;
+  box-shadow: var(--shadow-md);
+}
+
+[data-theme="dark"] .substack-cta {
+  background: linear-gradient(135deg, var(--color-bg-alt), #1a1f26);
+}
+
+.substack-cta .cta-inner {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.substack-cta .cta-badge {
+  display: inline-block;
+  padding: 0.4rem 1rem;
+  background: var(--color-accent);
+  color: #fff;
+  font-size: 0.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  border-radius: 20px;
+  margin-bottom: 1.5rem;
+}
+
+.substack-cta h3 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.substack-cta p {
+  font-size: 1.1rem;
+  color: var(--color-text-light);
+  margin-bottom: 2rem;
+}

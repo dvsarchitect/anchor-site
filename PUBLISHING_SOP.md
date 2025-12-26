@@ -23,7 +23,7 @@
 - [ ] Place source image in `hugo-site/static/images/devotionals/`
   ```powershell
   # Example usage
-  python ..\..\tools\create_websafe_image.py "input.jpg" "hugo-site/static/images/devotionals/your-image.webp"
+  python ..\..\scripts\utils\create_websafe_image.py "input.jpg" "hugo-site/static/images/devotionals/your-image.webp"
   ```
 - [ ] Confirm image is optimized and loads correctly
 ### 3. Preview Locally
@@ -33,12 +33,12 @@
   # Visit http://localhost:1313
   ```
 
-### 4. Commit & Push
-  git add .
-  git commit -m "Add new devotional: [Title]"
-  git push origin main
+### 4. Pre-flight & Finalize
+- [ ] Run the finalization script to test the build and push changes:
+  ```powershell
+  # From the root directory
+  powershell -ExecutionPolicy Bypass -File .\scripts\technical\finalize.ps1 -CommitMessage "Add new devotional: [Title]"
   ```
-
 - [ ] Wait 1-2 minutes for deployment
 - [ ] Visit https://gettheanchor.org to verify post is live
 ---
@@ -71,15 +71,10 @@ excerpt: "How to keep going when the fight feels hard."
 
 ---
 ## Automation Scripts
-- **End-of-Day Automation:**
+- **End-of-Day/Publishing Automation:**
   ```powershell
   # From the root directory
-  powershell -ExecutionPolicy Bypass -File .\scripts\finalize.ps1 -CommitMessage "Add new devotional: [Title]"
-  ```
-- **Manual Workflow:**
-  ```powershell
-  git commit -m "Add new devotional: [Title]"
-  git push origin main
+  powershell -ExecutionPolicy Bypass -File .\scripts\technical\finalize.ps1 -CommitMessage "Add new devotional: [Title]"
   ```
 
 

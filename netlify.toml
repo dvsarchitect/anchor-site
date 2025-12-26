@@ -1,6 +1,7 @@
 [build]
   command = "npm run build"
   publish = "public"
+  # Skip build if only docs or non-site-impact files changed
   ignore = "bash netlify-ignore.sh"
 
 [build.environment]
